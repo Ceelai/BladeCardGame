@@ -5,6 +5,11 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blade Card Game", "Blade Card Game\Blade Card Game.csproj", "{2DC65C9E-1AE3-4316-A360-427860BF2DFB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FD93EE38-B7E0-4CA7-99D7-9D3DB714519E}"
+	ProjectSection(SolutionItems) = preProject
+		Blade Card Game\vpproject\Blade Card Game.vpp = Blade Card Game\vpproject\Blade Card Game.vpp
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
