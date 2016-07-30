@@ -10,8 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blade Card Game", "Blade Ca
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FD93EE38-B7E0-4CA7-99D7-9D3DB714519E}"
 	ProjectSection(SolutionItems) = preProject
+		Blade Card Game\vpproject\Blade Card Game Class + Seq.vpp = Blade Card Game\vpproject\Blade Card Game Class + Seq.vpp
 		Blade Card Game\vpproject\Blade Card Game Class.vpp = Blade Card Game\vpproject\Blade Card Game Class.vpp
-		Blade Card Game\vpproject\Blade Card Game.vpp = Blade Card Game\vpproject\Blade Card Game.vpp
 		Blade Card Game\vpproject\Blade Card Game.vpppath = Blade Card Game\vpproject\Blade Card Game.vpppath
 		Blade Card Game\vpproject\Blade Card Game.vpp~3 = Blade Card Game\vpproject\Blade Card Game.vpp~3
 		Blade Card Game\vpproject\Blade Card Game.vux = Blade Card Game\vpproject\Blade Card Game.vux
