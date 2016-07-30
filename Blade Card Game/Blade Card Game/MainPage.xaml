@@ -75,9 +75,8 @@
                         <CompositeTransform Rotation="35.092" TranslateX="1.713" TranslateY="-17.566"/>
                     </Image.RenderTransform>
                 </Image>
-                <TextBlock x:Name="_txtAI" HorizontalAlignment="Left" TextWrapping="Wrap" Text="AI: " VerticalAlignment="Top" Margin="813,473,0,0" FontSize="48"/>
-                <TextBlock x:Name="_txtPlayer" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Player: " VerticalAlignment="Top" Margin="1014,519,0,0" FontSize="48"/>
-                <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="VS" VerticalAlignment="Top" Margin="934,487,0,0" FontSize="48"/>
+                <TextBlock x:Name="_txtAI" HorizontalAlignment="Left" TextWrapping="Wrap" Text="AI: " VerticalAlignment="Top" Margin="68,168,0,0" FontSize="48"/>
+                <TextBlock x:Name="_txtPlayer" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Player: " VerticalAlignment="Top" Margin="68,278,0,0" FontSize="48"/>
                 <Image x:Name="_aiCard1" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="739.258,27.439,1053.742,864.561" Source="Assets/word-ace-card-back.jpg" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
                     <Image.RenderTransform>
                         <CompositeTransform Rotation="145.74" TranslateX="284.574" TranslateY="2.887"/>
@@ -133,15 +132,23 @@
                         <CompositeTransform Rotation="0.571"/>
                     </Image.RenderTransform>
                 </Image>
-                <TextBlock x:Name="_txtPlayerScore" HorizontalAlignment="Left" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="1157,519,0,0" Height="57" Width="52" FontSize="48"/>
+                <TextBlock x:Name="_txtPlayerScore" HorizontalAlignment="Left" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="254,290,0,0" Height="57" Width="52" FontSize="48"/>
                 <Grid Margin="534,595,533,275">
 
                     <Image x:Name="image_Copy" HorizontalAlignment="Left" Height="199" VerticalAlignment="Top" Width="833" Margin="10,-3,0,0" Source="Assets/Abstract-Grey-Wallpaper-Pattern-Image-Mac-HD-Picture.jpg" Stretch="UniformToFill"/>
 
                     <Rectangle x:Name="_playerPlayArea" HorizontalAlignment="Center" Height="210" VerticalAlignment="Center" Width="853" Stroke="Black" StrokeThickness="10" Margin="0,-9,0,9"/>
                 </Grid>
+                <Button x:Name="_btnStart" Content="Start Game!" HorizontalAlignment="Left" Margin="1553,846,0,0" VerticalAlignment="Top" Height="170" Width="277" FontSize="50" Click="OnStartGame">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black" Offset="0"/>
+                            <GradientStop Color="White"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
             </Grid>
-            <TextBlock x:Name="_txtAiScore" HorizontalAlignment="Left" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="878,473,0,0" Height="57" Width="52" FontSize="48"/>
+            <TextBlock x:Name="_txtAiScore" HorizontalAlignment="Left" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="165,168,0,0" Height="57" Width="52" FontSize="48"/>
         </Grid>
     </Viewbox>
 </Page>

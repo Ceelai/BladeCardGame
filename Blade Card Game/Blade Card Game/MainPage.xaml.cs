@@ -27,5 +27,10 @@ namespace Blade_Card_Game
         {
             this.InitializeComponent();
         }
+
+        private void OnStartGame(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
