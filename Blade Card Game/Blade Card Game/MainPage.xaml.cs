@@ -34,7 +34,7 @@ namespace Blade_Card_Game
 
         static MainPage()
         {
-            s_cardBackImage = new BitmapImage(new Uri("ms-appx:///Assets/playing-card-back.jpg"));
+            s_cardBackImage = new BitmapImage(new Uri("ms-appx:///Assets/word-ace-card-back.jpg"));
         }
         public MainPage()
         {
