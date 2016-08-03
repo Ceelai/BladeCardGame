@@ -22,6 +22,12 @@ namespace BladeCardGameLogic
         
 
 
+        public Cards(byte value)
+        {
+            
+        }
+
+
         //method for the card deck.
         private void CardDeck()
         {

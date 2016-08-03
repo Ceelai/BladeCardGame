@@ -34,6 +34,9 @@ namespace BladeCardGameLogic
         public void PlayRound()
         {
 
+            //compare the player card with the house card 
+            if(_playerScore.)
+
         }
 
         //This will identify the card value based on which image is pulled from the deck. 
