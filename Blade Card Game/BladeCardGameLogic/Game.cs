@@ -29,13 +29,13 @@ namespace BladeCardGameLogic
         {
 
         }
-       
+
         //The "Start" method of the game. Will run when the users are ready to play. 
         public void PlayRound()
         {
 
             //compare the player card with the house card 
-            if(_playerScore.)
+
 
         }
 

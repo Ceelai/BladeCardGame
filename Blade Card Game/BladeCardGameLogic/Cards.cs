@@ -12,12 +12,9 @@ namespace BladeCardGameLogic
     public class Cards
     {
 
-        //using a list to gather cards 
-        private List<Card> _cardList; 
+       
 
 
-        //field variable for the static card randomizer
-        private static Random s_randomizer;
 
         
 
