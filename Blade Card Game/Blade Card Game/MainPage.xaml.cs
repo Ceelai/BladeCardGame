@@ -27,7 +27,7 @@ namespace Blade_Card_Game
 
 
         //represents the link between the presentation tier and logic tier 
-        private BladeCardGameLogic.Cards _game;
+        private BladeCardGameLogic.CardDeck _game;
 
 
         private static readonly BitmapImage s_cardBackImage;

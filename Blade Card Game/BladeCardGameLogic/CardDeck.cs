@@ -54,7 +54,30 @@ namespace BladeCardGameLogic
 
         private void CreateCards()
         {
+            //for loop to iterated and create each card up until the max card value. 
+            for (byte value = 1; value <= ValueCards.MAX_CARD_VALUE; value++)
+            {
+                ValueCards valCard = new ValueCards(value);
 
+                _cardList.Add(valCard);
+            }
+        }
+
+
+        //method for shuffling cards
+        private void ShuffleCards()
+        {
+            for (byte iDeckPos = 0; iDeckPos < _cardList.Count; iDeckPos++)
+            {
+
+                //take a random card out of the deck and place it in a high pos
+                int randIndex = Randomizer.Next(iDeckPos, _cardList.Count);
+
+                //swap cards randomly 
+                ValueCards crtCard = _cardList[iDeckPos];
+                _cardList[iDeckPos] = _cardList[randIndex];
+                _cardList[randIndex] = crtCard;
+            }
         }
     }
 }
