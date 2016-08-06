@@ -12,16 +12,33 @@ namespace BladeCardGameLogic
     public class Game
     {
         //field variable for the playerscore
-        public int _playerScore = 0;
+        public int _playerScore;
 
 
         //field variable for the dealerscore/housescore 
-        public int _dealerScore = 0 ;
+        public int _dealerScore ;
+
+
+        //field variable for the players card value 
+        public int _playerValue;
+
+        //field variable for the house card value 
+        public int _houseValue;
+
+
 
         //constructor for the Game Class
         public Game()
         {
             Game _game = new Game();
+
+            _playerValue = 0;
+
+            _houseValue = 0;
+
+            _playerScore = 0;
+
+            _dealerScore = 0;
 
         }
 
