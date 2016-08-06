@@ -12,18 +12,18 @@ namespace BladeCardGameLogic
     public class Score
     {
         //create instance of the Game Class 
-        Game game = new Game();
+        Game _game = new Game();
 
         //PlayerScore method when the player wins 
         public int PlayerScore()
         {
-            return game._playerScore + 1;
+            return _game._playerScore + 1;
         }
 
         //DealerScore method when the dealer wins 
         public int DealerScore()
         {
-            return game._dealerScore + 1;
+            return _game._dealerScore + 1;
         }
 
 

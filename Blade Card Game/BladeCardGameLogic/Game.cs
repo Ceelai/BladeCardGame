@@ -21,6 +21,7 @@ namespace BladeCardGameLogic
         //constructor for the Game Class
         public Game()
         {
+            Game _game = new Game();
 
         }
 
