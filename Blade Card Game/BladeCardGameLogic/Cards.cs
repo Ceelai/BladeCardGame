@@ -6,37 +6,13 @@ using System.Threading.Tasks;
 
 namespace BladeCardGameLogic
 {
-    /// <summary>
-    /// Cards class where the randomizing of cards will take place and Shuffling will take place. 
-    /// </summary>
-    public class Cards
+    class Cards
     {
+        private string value;
 
-       
-
-
-
-        
-
-
-        public Cards(byte value)
+        public Cards(string cardValue)
         {
-            
+            value = cardValue;
         }
-
-
-        //method for the card deck.
-        private void CardDeck()
-        {
-
-        }
-
-
-        //method for shuffling cards
-        private void ShuffleCards()
-        {
-
-        }
-
     }
 }
