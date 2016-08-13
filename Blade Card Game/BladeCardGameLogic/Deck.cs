@@ -6,49 +6,64 @@ using System.Threading.Tasks;
 
 namespace BladeCardGameLogic
 {
-    class Deck
+    public class Deck
     {
-        private Cards[] deck;
-        private int currentCard;
-        private const int NUMBER_OF_CARDS = 12;
-        private Random randNum;
+        private List<Cards> cards;
+
 
         public Deck()
         {
-            string[] values = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Mirror", "Bolt" };
-            deck = new Cards[NUMBER_OF_CARDS];
-            currentCard = 0;
-            randNum = new Random();
-
-            for (int i = 0; i < deck.Length; i++)
-            {
-                deck[i] = new Cards(values[i / 12]);
-            }
+            this.Initialize();
         }
 
+        public void Initialize()
+        {
+            cards = new List<Cards>();
+
+            for (int i = 0; i < 12; i++)
+            {
+                cards.Add(new Cards() { Face = (Face)i });
+
+                if (i <= 11)
+                    cards[cards.Count - 1].Value = 1;
+                else
+                    cards[cards.Count - 1].Value = i;
+            }
+
+            ShuffleDeck();
+        }
         public void ShuffleDeck()
         {
-            currentCard = 0;
+            Random rand = new Random();
+            int i = cards.Count;
 
-            for (int i = 0; i < deck.Length; i++)
+            while (i > 1)
             {
-                int e = randNum.Next(NUMBER_OF_CARDS);
-                Cards temp = deck[i];
-                deck[i] = deck[e];
-                deck[e] = temp;
+                i--;
+                int e = rand.Next(i + 1);
+                Cards card = cards[e];
+                cards[e] = cards[i];
+                cards[i] = card;
             }
         }
 
         public Cards DealCard()
         {
-            if (currentCard < deck.Length)
+            if (cards.Count <= 0)
             {
-                return deck[currentCard++];
+                this.Initialize();
             }
-            else
-            {
-                return null;
-            }
+
+            Cards returnCard = cards[cards.Count - 1];
+            cards.RemoveAt(cards.Count - 1);
+            return returnCard;
         }
+
+        public int RemaningCards()
+        {
+            return cards.Count;
+        }
+
+         
     }
 }

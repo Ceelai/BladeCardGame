@@ -2,6 +2,9 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
+using BladeCardGameLogic;
+using System.Collections.Generic;
+using Windows.UI.Popups;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -12,26 +15,45 @@ namespace Blade_Card_Game
     /// </summary>
     public sealed partial class MainPage : Page
     {
-
-
-        //represents the link between the presentation tier and logic tier 
-        private BladeCardGameLogic.CardDeck _game;
-
-
+        private Deck deck = new Deck();
         private static readonly BitmapImage s_cardBackImage;
+        private List<Cards> drawedCard = new List<Cards>();
 
+        private bool startButton = false;
         static MainPage()
         {
+            
             s_cardBackImage = new BitmapImage(new Uri("ms-appx:///Assets/card back.gif"));
         }
         public MainPage()
         {
             this.InitializeComponent();
+            
         }
 
-        private void OnStartGame(object sender, RoutedEventArgs e)
-        {
 
+        private async void _playerDeck_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            if (startButton == true)
+            {
+                if (drawedCard.Count < 12)
+                {
+                    drawedCard.Add(deck.DealCard());
+                    _playerPlayedCard1.Source = new BitmapImage(new Uri($"ms-appx:///Assets/card {drawedCard[drawedCard.Count - 1].Face}.gif"));
+                }
+                else
+                {
+                    _playerDeck.Visibility = Visibility.Collapsed;
+                    var message = new MessageDialog("There are no more cards!");
+                    await message.ShowAsync();
+                }
+            }
+        }
+
+        private void _btnStart_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            
+            startButton = true;
         }
     }
 }

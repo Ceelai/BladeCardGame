@@ -108,20 +108,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Abstract-Grey-Wallpaper-Pattern-Image-Mac-HD-Picture.jpg" />
-    <Content Include="Assets\bolt card.gif" />
-    <Content Include="Assets\card 1.gif" />
-    <Content Include="Assets\card 10.gif" />
-    <Content Include="Assets\card 2.gif" />
-    <Content Include="Assets\card 3.gif" />
-    <Content Include="Assets\card 4.gif" />
-    <Content Include="Assets\card 5.gif" />
-    <Content Include="Assets\card 6.gif" />
-    <Content Include="Assets\card 7.gif" />
-    <Content Include="Assets\card 8.gif" />
-    <Content Include="Assets\card 9.gif" />
+    <Content Include="Assets\card bolt.gif" />
+    <Content Include="Assets\card one.gif" />
+    <Content Include="Assets\card ten.gif" />
+    <Content Include="Assets\card two.gif" />
+    <Content Include="Assets\card three.gif" />
+    <Content Include="Assets\card four.gif" />
+    <Content Include="Assets\card five.gif" />
+    <Content Include="Assets\card six.gif" />
+    <Content Include="Assets\card seven.gif" />
+    <Content Include="Assets\card eight.gif" />
+    <Content Include="Assets\card nine.gif" />
     <Content Include="Assets\card back.gif" />
     <Content Include="Assets\Deck.gif" />
-    <Content Include="Assets\mirror card.gif" />
+    <Content Include="Assets\card mirror.gif" />
     <Content Include="Assets\vintage-pattern-wallpaper-4.jpg" />
     <Content Include="Assets\wood_planks_parquet_texture_surface_44962_1920x1080.jpg" />
     <Content Include="Assets\word-ace-card-back.jpg" />

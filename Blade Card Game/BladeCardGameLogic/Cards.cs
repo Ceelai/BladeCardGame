@@ -6,13 +6,24 @@ using System.Threading.Tasks;
 
 namespace BladeCardGameLogic
 {
-    class Cards
+    public enum Face
     {
-        private string value;
-
-        public Cards(string cardValue)
-        {
-            value = cardValue;
-        }
+        one,
+        two,
+        three,
+        four,
+        five,
+        six,
+        seven,
+        eight,
+        nine,
+        ten,
+        mirror,
+        bolt,
+    }
+    public class Cards
+    {
+        public Face Face { get; set; }
+        public int Value { get; set; }
     }
 }
