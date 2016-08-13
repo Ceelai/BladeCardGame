@@ -89,6 +89,11 @@ namespace Blade_Card_Game
         {
             _btnStart.Visibility = Visibility.Collapsed;
             startButton = true;
+
+            //ask the game to play a round 
+            _game.PlayRound();
         }
+
+
     }
 }
