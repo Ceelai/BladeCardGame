@@ -23,7 +23,7 @@ namespace BladeCardGameLogic
         public int _playerValue;
 
         //field variable for the house card value 
-        public int _houseValue;
+        public int _dealerValue;
 
 
 
@@ -34,7 +34,7 @@ namespace BladeCardGameLogic
 
             _playerValue = 0;
 
-            _houseValue = 0;
+            _dealerValue = 0;
 
             _playerScore = 0;
 
@@ -53,6 +53,7 @@ namespace BladeCardGameLogic
         {
 
             //compare the player card with the house card 
+
 
 
         }

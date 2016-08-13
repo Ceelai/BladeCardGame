@@ -15,6 +15,9 @@ namespace Blade_Card_Game
     /// </summary>
     public sealed partial class MainPage : Page
     {
+
+        private Score score = new Score();
+        private Game _game = new Game();
         private Deck deck = new Deck();
         private static readonly BitmapImage s_cardBackImage;
         private List<Cards> drawedCard = new List<Cards>();
@@ -28,10 +31,35 @@ namespace Blade_Card_Game
         public MainPage()
         {
             this.InitializeComponent();
-            
+
+
+            // figures out if the player card is either greater or small than the card and adds the score to the 
+            //player respectively 
+            if (_game._playerValue > _game._dealerValue)
+            {
+
+                _txtPlayerScore.Text = score.PlayerScore().ToString();
+
+
+
+            }
+
+            //same thing as above but for the dealer 
+            if (_game._playerValue < _game._dealerValue)
+            {
+
+                _txtAiScore.Text = score.DealerScore().ToString();
+            }
+
+            //just in case something blows up, we have this message to save the day xD
+            else
+            {
+                var message = new MessageDialog("Something went wrong :(. Contact game dev for this issue.");
+            }
+
         }
 
-
+        //Method for distributing the cards when the deck is clicked. 
         private async void _playerDeck_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             if (startButton == true)
@@ -48,8 +76,12 @@ namespace Blade_Card_Game
                     await message.ShowAsync();
                 }
             }
+
+
+            
         }
 
+        //Method for starting the game
         private void _btnStart_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             _btnStart.Visibility = Visibility.Collapsed;
