@@ -52,7 +52,7 @@ namespace Blade_Card_Game
 
         private void _btnStart_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            
+            _btnStart.Visibility = Visibility.Collapsed;
             startButton = true;
         }
     }
