@@ -25,7 +25,7 @@ namespace Blade_Card_Game
         private bool startButton = false;
         static MainPage()
         {
-            
+
             s_cardBackImage = new BitmapImage(new Uri("ms-appx:///Assets/card back.gif"));
         }
         public MainPage()
@@ -38,10 +38,8 @@ namespace Blade_Card_Game
             if (_game._playerValue > _game._dealerValue)
             {
 
+                //converts textblock into the players score value in string format 
                 _txtPlayerScore.Text = score.PlayerScore().ToString();
-
-
-
             }
 
             //same thing as above but for the dealer 
@@ -51,6 +49,11 @@ namespace Blade_Card_Game
                 _txtAiScore.Text = score.DealerScore().ToString();
             }
 
+            //don't add anything if they are equal values 
+            if (_game._playerValue == _game._dealerValue)
+            {
+                var message = new MessageDialog("Since both cards are equal, they are sent back into the deck and a new card will be drawn. No points are awarded for this.");
+            }
             //just in case something blows up, we have this message to save the day xD
             else
             {
@@ -78,7 +81,7 @@ namespace Blade_Card_Game
             }
 
 
-            
+
         }
 
         //Method for starting the game
