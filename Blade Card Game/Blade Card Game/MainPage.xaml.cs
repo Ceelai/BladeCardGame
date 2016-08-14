@@ -34,7 +34,7 @@ namespace Blade_Card_Game
 
         private async void _playerDeck_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (startButton == true)
+            if (startButton == true && _playerPlayedCard1.Source == null)
             {
                 if (drawedCard.Count < 12)
                 {
