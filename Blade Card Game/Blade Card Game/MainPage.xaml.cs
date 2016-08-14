@@ -22,6 +22,7 @@ namespace Blade_Card_Game
         private static readonly BitmapImage s_cardBackImage;
         private List<Cards> playerDrawedCard = new List<Cards>();
         private List<Cards> aiDrawedCard = new List<Cards>();
+        private string playerCardImage;
         private int playerScore = 0;
         private int aiScore = 0;
 
@@ -49,8 +50,11 @@ namespace Blade_Card_Game
                 {
                     aiDrawedCard.Add(deck.DealCard());
                     playerDrawedCard.Add(deck.DealCard());
-                    _playerPlayedCard1.Source = new BitmapImage(new Uri($"ms-appx:///Assets/card {playerDrawedCard[playerDrawedCard.Count - 1].Face}.gif"));
+                    playerCardImage = $"ms-appx:///Assets/card {playerDrawedCard[playerDrawedCard.Count - 1].Face}.gif";
+                    _playerPlayedCard1.Source = new BitmapImage(new Uri(playerCardImage));
                     _aiPlayedCard1.Source = new BitmapImage(new Uri($"ms-appx:///Assets/card {aiDrawedCard[aiDrawedCard.Count - 1].Face}.gif"));
+
+                    _txtPlayerScore.Text = Convert.ToString(_game.CardValue(playerCardImage));
                 }
                 else
                 {
@@ -74,7 +78,7 @@ namespace Blade_Card_Game
             //ask the game to play a round 
             _game.PlayRound();
 
-
+            
 
             // figures out if the player card is either greater or small than the card and adds the score to the 
             //player respectively 

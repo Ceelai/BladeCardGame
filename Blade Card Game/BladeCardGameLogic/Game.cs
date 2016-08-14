@@ -52,16 +52,16 @@ namespace BladeCardGameLogic
         public void PlayRound()
         {
             //compare the two cards to see which of them is greater 
-            if (_game._playerValue > _game._dealerValue)
-            {
-                _game._playerScore = _game._playerScore + _game._playerValue;
+            //if (_game._playerValue > _game._dealerValue)
+            //{
+                //_game._playerScore = _game._playerScore + _game._playerValue;
 
-            }
+            //}
 
-            if (_game._dealerValue > _game._playerValue)
-            {
-                _game._dealerScore = _game._dealerScore + _game._dealerValue;
-            }
+            //if (_game._dealerValue > _game._playerValue)
+            //{
+                //_game._dealerScore = _game._dealerScore + _game._dealerValue;
+            //}
         }
 
         //This will identify the card value based on which image is pulled from the deck. 
