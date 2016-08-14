@@ -86,11 +86,7 @@ namespace Blade_Card_Game
                 _txtAiScore.Text = score.DealerScore().ToString();
             }
 
-            //don't add anything if they are equal values 
-            if (_game._playerValue == _game._dealerValue)
-            {
-                var message = new MessageDialog("Since both cards are equal, they are sent back into the deck and a new card will be drawn. No points are awarded for this.");
-            }
+            
             //just in case something blows up, we have this message to save the day xD
             else
             {
