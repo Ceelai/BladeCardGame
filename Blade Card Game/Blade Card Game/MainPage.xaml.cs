@@ -20,7 +20,10 @@ namespace Blade_Card_Game
         private Game _game = new Game();
         private Deck deck = new Deck();
         private static readonly BitmapImage s_cardBackImage;
-        private List<Cards> drawedCard = new List<Cards>();
+        private List<Cards> playerDrawedCard = new List<Cards>();
+        private List<Cards> aiDrawedCard = new List<Cards>();
+        private int playerScore = 0;
+        private int aiScore = 0;
 
         private bool startButton = false;
         static MainPage()
@@ -40,18 +43,21 @@ namespace Blade_Card_Game
         //Method for distributing the cards when the deck is clicked. 
         private async void _playerDeck_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (startButton == true)
+            if (startButton == true && _playerPlayedCard1.Source == null)
             {
-                if (drawedCard.Count < 12)
+                if (playerDrawedCard.Count < 12)
                 {
-                    drawedCard.Add(deck.DealCard());
-                    _playerPlayedCard1.Source = new BitmapImage(new Uri($"ms-appx:///Assets/card {drawedCard[drawedCard.Count - 1].Face}.gif"));
+                    aiDrawedCard.Add(deck.DealCard());
+                    playerDrawedCard.Add(deck.DealCard());
+                    _playerPlayedCard1.Source = new BitmapImage(new Uri($"ms-appx:///Assets/card {playerDrawedCard[playerDrawedCard.Count - 1].Face}.gif"));
+                    _aiPlayedCard1.Source = new BitmapImage(new Uri($"ms-appx:///Assets/card {aiDrawedCard[aiDrawedCard.Count - 1].Face}.gif"));
                 }
                 else
                 {
                     _playerDeck.Visibility = Visibility.Collapsed;
-                    var message = new MessageDialog("There are no more cards!");
+                    var message = new MessageDialog("There are no more cards! Game is a tie.");
                     await message.ShowAsync();
+                    startButton = false;
                 }
             }
 
