@@ -23,6 +23,7 @@ namespace Blade_Card_Game
         private List<Cards> playerDrawedCard = new List<Cards>();
         private List<Cards> aiDrawedCard = new List<Cards>();
         private string playerCardImage;
+        private string aiCardImage;
         private int playerScore = 0;
         private int aiScore = 0;
 
@@ -50,11 +51,14 @@ namespace Blade_Card_Game
                 {
                     aiDrawedCard.Add(deck.DealCard());
                     playerDrawedCard.Add(deck.DealCard());
+
                     playerCardImage = $"ms-appx:///Assets/card {playerDrawedCard[playerDrawedCard.Count - 1].Face}.gif";
+                    aiCardImage = $"ms-appx:///Assets/card {aiDrawedCard[aiDrawedCard.Count - 1].Face}.gif";
                     _playerPlayedCard1.Source = new BitmapImage(new Uri(playerCardImage));
-                    _aiPlayedCard1.Source = new BitmapImage(new Uri($"ms-appx:///Assets/card {aiDrawedCard[aiDrawedCard.Count - 1].Face}.gif"));
+                    _aiPlayedCard1.Source = new BitmapImage(new Uri(aiCardImage));
 
                     _txtPlayerScore.Text = Convert.ToString(_game.CardValue(playerCardImage));
+                    _txtAiScore.Text = Convert.ToString(_game.CardValue(aiCardImage));
                 }
                 else
                 {
