@@ -33,32 +33,7 @@ namespace Blade_Card_Game
             this.InitializeComponent();
 
 
-            // figures out if the player card is either greater or small than the card and adds the score to the 
-            //player respectively 
-            if (_game._playerValue > _game._dealerValue)
-            {
 
-                //converts textblock into the players score value in string format 
-                _txtPlayerScore.Text = score.PlayerScore().ToString();
-            }
-
-            //same thing as above but for the dealer 
-            if (_game._playerValue < _game._dealerValue)
-            {
-
-                _txtAiScore.Text = score.DealerScore().ToString();
-            }
-
-            //don't add anything if they are equal values 
-            if (_game._playerValue == _game._dealerValue)
-            {
-                var message = new MessageDialog("Since both cards are equal, they are sent back into the deck and a new card will be drawn. No points are awarded for this.");
-            }
-            //just in case something blows up, we have this message to save the day xD
-            else
-            {
-                var message = new MessageDialog("Something went wrong :(. Contact game dev for this issue.");
-            }
 
         }
 
@@ -92,6 +67,35 @@ namespace Blade_Card_Game
 
             //ask the game to play a round 
             _game.PlayRound();
+
+
+
+            // figures out if the player card is either greater or small than the card and adds the score to the 
+            //player respectively 
+            if (_game._playerValue > _game._dealerValue)
+            {
+
+                //converts textblock into the players score value in string format 
+                _txtPlayerScore.Text = score.PlayerScore().ToString();
+            }
+
+            //same thing as above but for the dealer 
+            if (_game._playerValue < _game._dealerValue)
+            {
+
+                _txtAiScore.Text = score.DealerScore().ToString();
+            }
+
+            //don't add anything if they are equal values 
+            if (_game._playerValue == _game._dealerValue)
+            {
+                var message = new MessageDialog("Since both cards are equal, they are sent back into the deck and a new card will be drawn. No points are awarded for this.");
+            }
+            //just in case something blows up, we have this message to save the day xD
+            else
+            {
+                var message = new MessageDialog("Something went wrong :(. Contact game dev for this issue.");
+            }
         }
 
 
