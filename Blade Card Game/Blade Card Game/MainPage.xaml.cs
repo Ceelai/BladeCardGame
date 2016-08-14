@@ -80,7 +80,7 @@ namespace Blade_Card_Game
             //player respectively 
             if (_game._playerValue > _game._dealerValue)
             {
-
+                score.PlayerScore();
                 //converts textblock into the players score value in string format 
                 _txtPlayerScore.Text = score.PlayerScore().ToString();
             }
@@ -88,7 +88,7 @@ namespace Blade_Card_Game
             //same thing as above but for the dealer 
             if (_game._playerValue < _game._dealerValue)
             {
-
+                score.DealerScore();
                 _txtAiScore.Text = score.DealerScore().ToString();
             }
 
