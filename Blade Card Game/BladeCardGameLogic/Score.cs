@@ -18,22 +18,21 @@ namespace BladeCardGameLogic
         public int PlayerScore()
         {
 
-            if (_game._playerValue > _game._dealerScore)
-            {
-                _game._playerScore = _game._playerScore++;
-            }
+            //Value of the player's winning card is then added to the players current score.            
+            _game._playerScore = _game._playerScore + _game._playerValue;
 
+            
+            //returns the new players score 
             return _game._playerScore;
+
         }
 
         //DealerScore method when the dealer wins 
         public int DealerScore()
         {
-            if (_game._houseValue > _game._playerScore)
-            {
-                _game._dealerScore = _game._dealerScore++;
-            }
-            return _game._dealerScore;
+            _game._dealerScore = _game._dealerScore + _game._dealerValue;
+
+            return _game._dealerValue;
         }
 
 
