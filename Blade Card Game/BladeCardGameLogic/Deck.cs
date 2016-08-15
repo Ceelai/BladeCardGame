@@ -59,6 +59,20 @@ namespace BladeCardGameLogic
             return returnCard;
         }
 
+        public Cards DealHand()
+        {
+            Random rand = new Random();
+            if (cards.Count <= 0)
+            {
+                this.Initialize();
+            }
+           
+            Cards returnCard = cards[rand.Next(0, 13)];
+            return returnCard;
+        }
+
+
+
         public int RemaningCards()
         {
             return cards.Count;
