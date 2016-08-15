@@ -24,55 +24,55 @@
 
                 <Rectangle x:Name="_aiPlayArea" HorizontalAlignment="Center" Height="210" VerticalAlignment="Center" Width="853" Margin="534,273,533,587" StrokeThickness="10" Stroke="Black"/>
 
-                <Image x:Name="_playerCard1" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="749.032,848.548,1043.968,43.452" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                <Image x:Name="_playerCard1" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="545.461,853.548,1247.539,48.452" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
                     <Image.RenderTransform>
-                        <CompositeTransform Rotation="-34.649" TranslateX="-0.708" TranslateY="18.551"/>
+                        <CompositeTransform TranslateX="-0.708" TranslateY="18.551"/>
                     </Image.RenderTransform>
                 </Image>
-                <Image x:Name="_playerCard2" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="774.181,843.312,1018.819,48.688" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                <Image x:Name="_playerCard2" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="620,857,1173,45" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
-                        <CompositeTransform Rotation="-23.166" TranslateX="-2.495" TranslateY="14.662"/>
+                        <CompositeTransform TranslateX="-2.495" TranslateY="14.662"/>
                     </Image.RenderTransform>
                 </Image>
-                <Image x:Name="_playerCard3" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="800.946,838.539,992.054,63.461" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                <Image x:Name="_playerCard3" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="696,860,1097,42" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
-                        <CompositeTransform Rotation="-16.661" TranslateX="-2.996" TranslateY="11.397"/>
+                        <CompositeTransform TranslateX="-2.996" TranslateY="11.397"/>
                     </Image.RenderTransform>
                 </Image>
-                <Image x:Name="_playerCard4" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="834.973,836.095,958.027,65.905" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                <Image x:Name="_playerCard4" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="771,865,1022,37" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
-                        <CompositeTransform Rotation="-11.687" TranslateX="-3.566" TranslateY="7.241"/>
+                        <CompositeTransform TranslateX="-3.566" TranslateY="7.241"/>
                     </Image.RenderTransform>
                 </Image>
-                <Image x:Name="_playerCard5" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="866.973,836.095,926.027,65.905" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                <Image x:Name="_playerCard5" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="848,868,945,34" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
-                        <CompositeTransform Rotation="-7.05" TranslateX="-3.808" TranslateY="3.314"/>
+                        <CompositeTransform TranslateX="-3.808" TranslateY="3.314"/>
                     </Image.RenderTransform>
                 </Image>
-                <Image x:Name="_playerCard6" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="894.19,841.434,898.81,60.566" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                <Image x:Name="_playerCard6" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="927,871,866,31" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
-                        <CompositeTransform Rotation="1.858" TranslateX="-3.346" TranslateY="-0.065"/>
+                        <CompositeTransform TranslateX="-3.346" TranslateY="-0.065"/>
                     </Image.RenderTransform>
                 </Image>
-                <Image x:Name="_playerCard7" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="931.294,838.878,861.706,53.122" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                <Image x:Name="_playerCard7" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="1005,874,788,28" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
-                        <CompositeTransform Rotation="8.836" TranslateX="-3.235" TranslateY="-3.138"/>
+                        <CompositeTransform TranslateX="-3.235" TranslateY="-3.138"/>
                     </Image.RenderTransform>
                 </Image>
                 <Image x:Name="_playerDeck" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="179,841,1614,51" Source="Assets/Deck.gif" Tapped="_playerDeck_Tapped"/>
-                <Image x:Name="_playerCard8" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="965.512,858.547,827.488,33.453" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                <Image x:Name="_playerCard8" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="1080,882,713,20" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
-                        <CompositeTransform Rotation="18.268" TranslateX="-1.302" TranslateY="-11.082"/>
+                        <CompositeTransform TranslateX="-1.302" TranslateY="-11.082"/>
                     </Image.RenderTransform>
                 </Image>
-                <Image x:Name="_playerCard9" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="995.964,874.208,797.036,17.792" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                <Image x:Name="_playerCard9" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="1158,885,635,17" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
-                        <CompositeTransform Rotation="23.519" TranslateX="0.28" TranslateY="-15.025"/>
+                        <CompositeTransform TranslateX="0.28" TranslateY="-15.025"/>
                     </Image.RenderTransform>
                 </Image>
-                <Image x:Name="_playerCard10" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="1031.666,892.746,761.334,9.254" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                <Image x:Name="_playerCard10" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="1235,888,558,14" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
-                        <CompositeTransform Rotation="35.092" TranslateX="1.713" TranslateY="-17.566"/>
+                        <CompositeTransform TranslateX="1.713" TranslateY="-17.566"/>
                     </Image.RenderTransform>
                 </Image>
                 <TextBlock x:Name="_txtAI" HorizontalAlignment="Left" TextWrapping="Wrap" Text="AI: " VerticalAlignment="Top" Margin="30,127,0,0" FontSize="80" Foreground="White"/>

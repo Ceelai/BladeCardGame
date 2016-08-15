@@ -82,20 +82,26 @@ namespace Blade_Card_Game
             _btnStart.Visibility = Visibility.Collapsed;
             startButton = true;
             int i = 0;
+            
+            string card = "";
             var playerCards = new[] { _playerCard1, _playerCard2, _playerCard3, _playerCard4, _playerCard5, _playerCard6, _playerCard7, _playerCard8, _playerCard9, _playerCard10};
             
             //ask the game to play a round 
             _game.PlayRound();
 
-            _game.DealCards(cardsInHand);
-
-            while (i != 10)
+            if (startButton == true)
             {
-                
-                playerCards[i].Source = new BitmapImage(new Uri($"ms-appx:///Assets/card {cardsInHand[i].Face}.gif"));
-                i++;
+                _game.DealCards(cardsInHand);
 
+                while (i != 10)
+                {
+                    card = $"ms-appx:///Assets/card {cardsInHand[i].Face}.gif";
+                    playerCards[i].Source = new BitmapImage(new Uri(card));
+                    i++;
+
+                }
             }
+            
 
             // figures out if the player card is either greater or small than the card and adds the score to the 
             //player respectively 

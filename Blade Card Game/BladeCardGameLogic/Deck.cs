@@ -10,7 +10,12 @@ namespace BladeCardGameLogic
     {
         private List<Cards> cards;
 
+        private static Random ran = new Random();
 
+        static Deck()
+        {
+            Random ran = new Random();
+        }
         public Deck()
         {
             this.Initialize();
@@ -61,13 +66,13 @@ namespace BladeCardGameLogic
 
         public Cards DealHand()
         {
-            Random rand = new Random();
+            
             if (cards.Count <= 0)
             {
                 this.Initialize();
             }
            
-            Cards returnCard = cards[rand.Next(0, 13)];
+            Cards returnCard = cards[ran.Next(0,12)];
             return returnCard;
         }
 
