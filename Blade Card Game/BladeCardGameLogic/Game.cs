@@ -30,7 +30,7 @@ namespace BladeCardGameLogic
         //constructor for the Game Class
         public Game()
         {
-            
+
 
             _playerValue = 0;
 
@@ -61,7 +61,7 @@ namespace BladeCardGameLogic
         //The "Start" method of the game. Will run when the users are ready to play. 
         public void PlayRound()
         {
-            
+
         }
 
         //This will identify the card value based on which image is pulled from the deck. 
@@ -69,7 +69,7 @@ namespace BladeCardGameLogic
         {
             int value = 0;
 
-            switch(cardValue)
+            switch (cardValue)
             {
                 case "ms-appx:///Assets/card one.gif":
                 case "ms-appx:///Assets/card bolt.gif":
