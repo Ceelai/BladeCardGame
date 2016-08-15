@@ -43,9 +43,19 @@ namespace BladeCardGameLogic
         }
 
         //Deal cards method so that when either house or player needs more cards. The method will give more cards from the deck 
-        public void DealCards()
+        public List<Cards> DealCards(List<Cards> cardsInHand)
         {
+            Deck hand = new Deck();
+            //List<Cards> cardsInHand = new List<Cards>();
+            int i = 0;
 
+            while(i < 10)
+            {
+                cardsInHand.Add(hand.DealHand());
+                i++;
+            }
+
+            return cardsInHand;
         }
 
         //The "Start" method of the game. Will run when the users are ready to play. 

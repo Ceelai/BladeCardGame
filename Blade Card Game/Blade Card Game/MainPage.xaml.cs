@@ -5,6 +5,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using BladeCardGameLogic;
 using System.Collections.Generic;
 using Windows.UI.Popups;
+using System.Threading;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -22,8 +23,10 @@ namespace Blade_Card_Game
         private static readonly BitmapImage s_cardBackImage;
         private List<Cards> playerDrawedCard = new List<Cards>();
         private List<Cards> aiDrawedCard = new List<Cards>();
+        private List<Cards> cardsInHand = new List<Cards>();
         private string playerCardImage;
         private string aiCardImage;
+        
         private int playerScore = 0;
         private int aiScore = 0;
 
@@ -78,11 +81,21 @@ namespace Blade_Card_Game
         {
             _btnStart.Visibility = Visibility.Collapsed;
             startButton = true;
-
+            int i = 0;
+            var playerCards = new[] { _playerCard1, _playerCard2, _playerCard3, _playerCard4, _playerCard5, _playerCard6, _playerCard7, _playerCard8, _playerCard9, _playerCard10};
+            
             //ask the game to play a round 
             _game.PlayRound();
 
-            
+            _game.DealCards(cardsInHand);
+
+            while (i != 10)
+            {
+                
+                playerCards[i].Source = new BitmapImage(new Uri($"ms-appx:///Assets/card {cardsInHand[i].Face}.gif"));
+                i++;
+
+            }
 
             // figures out if the player card is either greater or small than the card and adds the score to the 
             //player respectively 
