@@ -118,57 +118,6 @@ namespace BladeCardGameLogic
             return value;
         }
 
-        public int playCard(string cardValue)
-        {
-            int value = 0;
-
-            switch (cardValue)
-            {
-                case "ms-appx:///Assets/card one.gif":
-                case "ms-appx:///Assets/card bolt.gif":
-                case "ms-appx:///Assets/card mirror.gif":
-                    value = 1;
-                    return value;
-
-                case "ms-appx:///Assets/card two.gif":
-                    value = 2;
-                    return value;
-
-                case "ms-appx:///Assets/card three.gif":
-                    value = 3;
-                    return value;
-
-                case "ms-appx:///Assets/card four.gif":
-                    value = 4;
-                    return value;
-
-                case "ms-appx:///Assets/card five.gif":
-                    value = 5;
-                    return value;
-
-                case "ms-appx:///Assets/card six.gif":
-                    value = 6;
-                    return value;
-
-                case "ms-appx:///Assets/card seven.gif":
-                    value = 7;
-                    return value;
-
-                case "ms-appx:///Assets/card eight.gif":
-                    value = 8;
-                    return value;
-
-                case "ms-appx:///Assets/card nine.gif":
-                    value = 9;
-                    return value;
-
-                case "ms-appx:///Assets/card ten.gif":
-                    value = 10;
-                    return value;
-            }
-            return value;
-        }
-
         //
         public void SaveData()
         {
