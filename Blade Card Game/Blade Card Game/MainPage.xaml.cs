@@ -176,7 +176,7 @@ namespace Blade_Card_Game
                 aiEmptySlot(_aiCard2);
                 _aiCard2.Visibility = Visibility.Collapsed;
 
-                aiCardImage = $"ms-appx:///Assets/card {aiCardsInHand[0].Face}.gif";
+                aiCardImage = $"ms-appx:///Assets/card {aiCardsInHand[1].Face}.gif";
                 aiScore = Convert.ToInt32(_txtAiScore.Text) + _game.CardValue(aiCardImage);
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
@@ -190,7 +190,7 @@ namespace Blade_Card_Game
                 aiEmptySlot(_aiCard3);
                 _aiCard3.Visibility = Visibility.Collapsed;
 
-                aiCardImage = $"ms-appx:///Assets/card {aiCardsInHand[0].Face}.gif";
+                aiCardImage = $"ms-appx:///Assets/card {aiCardsInHand[2].Face}.gif";
                 aiScore = Convert.ToInt32(_txtAiScore.Text) + _game.CardValue(aiCardImage);
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
@@ -204,7 +204,7 @@ namespace Blade_Card_Game
                 aiEmptySlot(_aiCard4);
                 _aiCard4.Visibility = Visibility.Collapsed;
 
-                aiCardImage = $"ms-appx:///Assets/card {aiCardsInHand[0].Face}.gif";
+                aiCardImage = $"ms-appx:///Assets/card {aiCardsInHand[3].Face}.gif";
                 aiScore = Convert.ToInt32(_txtAiScore.Text) + _game.CardValue(aiCardImage);
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
@@ -218,7 +218,7 @@ namespace Blade_Card_Game
                 aiEmptySlot(_aiCard5);
                 _aiCard5.Visibility = Visibility.Collapsed;
 
-                aiCardImage = $"ms-appx:///Assets/card {aiCardsInHand[0].Face}.gif";
+                aiCardImage = $"ms-appx:///Assets/card {aiCardsInHand[4].Face}.gif";
                 aiScore = Convert.ToInt32(_txtAiScore.Text) + _game.CardValue(aiCardImage);
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
@@ -232,7 +232,7 @@ namespace Blade_Card_Game
                 aiEmptySlot(_aiCard6);
                 _aiCard6.Visibility = Visibility.Collapsed;
 
-                aiCardImage = $"ms-appx:///Assets/card {aiCardsInHand[0].Face}.gif";
+                aiCardImage = $"ms-appx:///Assets/card {aiCardsInHand[5].Face}.gif";
                 aiScore = Convert.ToInt32(_txtAiScore.Text) + _game.CardValue(aiCardImage);
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
@@ -246,7 +246,7 @@ namespace Blade_Card_Game
                 aiEmptySlot(_aiCard7);
                 _aiCard7.Visibility = Visibility.Collapsed;
 
-                aiCardImage = $"ms-appx:///Assets/card {aiCardsInHand[0].Face}.gif";
+                aiCardImage = $"ms-appx:///Assets/card {aiCardsInHand[6].Face}.gif";
                 aiScore = Convert.ToInt32(_txtAiScore.Text) + _game.CardValue(aiCardImage);
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
@@ -260,7 +260,7 @@ namespace Blade_Card_Game
                 aiEmptySlot(_aiCard8);
                 _aiCard8.Visibility = Visibility.Collapsed;
 
-                aiCardImage = $"ms-appx:///Assets/card {aiCardsInHand[0].Face}.gif";
+                aiCardImage = $"ms-appx:///Assets/card {aiCardsInHand[7].Face}.gif";
                 aiScore = Convert.ToInt32(_txtAiScore.Text) + _game.CardValue(aiCardImage);
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
@@ -274,7 +274,7 @@ namespace Blade_Card_Game
                 aiEmptySlot(_aiCard9);
                 _aiCard9.Visibility = Visibility.Collapsed;
 
-                aiCardImage = $"ms-appx:///Assets/card {aiCardsInHand[0].Face}.gif";
+                aiCardImage = $"ms-appx:///Assets/card {aiCardsInHand[8].Face}.gif";
                 aiScore = Convert.ToInt32(_txtAiScore.Text) + _game.CardValue(aiCardImage);
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
@@ -288,7 +288,7 @@ namespace Blade_Card_Game
                 aiEmptySlot(_aiCard10);
                 _aiCard10.Visibility = Visibility.Collapsed;
 
-                aiCardImage = $"ms-appx:///Assets/card {aiCardsInHand[0].Face}.gif";
+                aiCardImage = $"ms-appx:///Assets/card {aiCardsInHand[9].Face}.gif";
                 aiScore = Convert.ToInt32(_txtAiScore.Text) + _game.CardValue(aiCardImage);
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
