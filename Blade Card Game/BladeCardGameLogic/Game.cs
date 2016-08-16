@@ -51,7 +51,7 @@ namespace BladeCardGameLogic
             //List<Cards> cardsInHand = new List<Cards>();
             int i = 0;
 
-            while(i < 10)
+            while (i < 10)
             {
                 cardsInHand.Add(hand.DealHand());
                 i++;
@@ -169,22 +169,48 @@ namespace BladeCardGameLogic
             return value;
         }
 
-        public void  SaveData()
+        //
+        public void SaveData()
         {
+
+            string line;
+            //Opens the txt file, reads the number inside and replaces it with the new score. 
             try
 
             {
                 FileStream aFile = new FileStream("SaveFile.txt", FileMode.OpenOrCreate);
 
-                StreamWriter write = new StreamWriter(aFile);
 
-                string updatescore = _playerScore.ToString();
+                //this piece of snickerdoodle reads to goddamn text file 
+                StreamReader sr = new StreamReader(aFile);
 
-                write.WriteLineAsync(_playerScore.ToString());
+                //this reads the lines found inside the .txt file 
+                line = sr.ReadLine();
 
-                
+                try
+                {
 
-                
+
+                    StreamWriter write = new StreamWriter(aFile);
+
+
+                    string updatescore = _playerScore.ToString();
+
+                    write.WriteLine(updatescore);
+
+
+
+                }
+
+
+                catch (IOException e)
+                {
+
+                }
+
+
+
+
 
 
             }
@@ -195,6 +221,6 @@ namespace BladeCardGameLogic
                 return;
             }
         }
-          
+
     }
 }
