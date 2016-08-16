@@ -24,6 +24,7 @@ namespace Blade_Card_Game
         private List<Cards> playerDrawedCard = new List<Cards>();
         private List<Cards> aiDrawedCard = new List<Cards>();
         private List<Cards> cardsInHand = new List<Cards>();
+        private List<Cards> aiCardsInHand = new List<Cards>();
         private string playerCardImage;
         private string aiCardImage;
         
@@ -84,18 +85,21 @@ namespace Blade_Card_Game
             int i = 0;
             
             string card = "";
+            string aiCard = "";
             var playerCards = new[] { _playerCard1, _playerCard2, _playerCard3, _playerCard4, _playerCard5, _playerCard6, _playerCard7, _playerCard8, _playerCard9, _playerCard10};
-            
+            var aiCards = new[] { _aiCard1, _aiCard2, _aiCard3, _aiCard4, _aiCard5, _aiCard6, _aiCard7, _aiCard8, _aiCard9, _aiCard10};
             //ask the game to play a round 
             _game.PlayRound();
-
+            
             if (startButton == true)
             {
                 _game.DealCards(cardsInHand);
-
+                _game.DealCards(aiCardsInHand);
                 while (i != 10)
                 {
                     card = $"ms-appx:///Assets/card {cardsInHand[i].Face}.gif";
+                    aiCard = $"ms-appx:///Assets/card {aiCardsInHand[i].Face}.gif";
+                    aiCards[i].Source = new BitmapImage(new Uri(aiCard));
                     playerCards[i].Source = new BitmapImage(new Uri(card));
                     i++;
 
@@ -127,6 +131,105 @@ namespace Blade_Card_Game
             }
         }
 
+        private void emptySlot(Image playedCard)
+        {
+            var cardArea = new[] { _playerPlayedCard1, _playerPlayedCard2, _playerPlayedCard3, _playerPlayedCard4, _playerPlayedCard5, _playerPlayedCard6, _playerPlayedCard7, _playerPlayedCard8, _playerPlayedCard9, _playerPlayedCard10 };
+            for (int i = 0; i < 10; i++)
+            {
+                if (cardArea[i].Source == null)
+                {
+                    cardArea[i].Source = playedCard.Source;
+                    break;
+                }
+            }
+        }
 
+        private void _playerCard1_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            if(_playerCard1.Visibility != Visibility.Collapsed)
+            {
+                emptySlot(_playerCard1);
+                _playerCard1.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void _playerCard2_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            if (_playerCard2.Visibility != Visibility.Collapsed)
+            {
+                emptySlot(_playerCard1);
+                _playerCard2.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void _playerCard3_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            if (_playerCard3.Visibility != Visibility.Collapsed)
+            {
+                emptySlot(_playerCard1);
+                _playerCard3.Visibility = Visibility.Collapsed;
+            }
+        }
+        private void _playerCard4_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            if (_playerCard4.Visibility != Visibility.Collapsed)
+            {
+                emptySlot(_playerCard1);
+                _playerCard4.Visibility = Visibility.Collapsed;
+            }
+        }
+        private void _playerCard5_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            if (_playerCard5.Visibility != Visibility.Collapsed)
+            {
+                emptySlot(_playerCard1);
+                _playerCard5.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void _playerCard6_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            if (_playerCard6.Visibility != Visibility.Collapsed)
+            {
+                emptySlot(_playerCard1);
+                _playerCard6.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void _playerCard7_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            if (_playerCard7.Visibility != Visibility.Collapsed)
+            {
+                emptySlot(_playerCard1);
+                _playerCard7.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void _playerCard8_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            if (_playerCard8.Visibility != Visibility.Collapsed)
+            {
+                emptySlot(_playerCard1);
+                _playerCard8.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void _playerCard9_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            if (_playerCard9.Visibility != Visibility.Collapsed)
+            {
+                emptySlot(_playerCard1);
+                _playerCard9.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void _playerCard10_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            if (_playerCard10.Visibility != Visibility.Collapsed)
+            {
+                emptySlot(_playerCard1);
+                _playerCard10.Visibility = Visibility.Collapsed;
+            }
+        }
     }
 }
