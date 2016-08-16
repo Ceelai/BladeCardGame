@@ -60,12 +60,6 @@ namespace BladeCardGameLogic
             return cardsInHand;
         }
 
-        //The "Start" method of the game. Will run when the users are ready to play. 
-        public void RoundWinner()
-        {
-
-        }
-
         //This will identify the card value based on which image is pulled from the deck. 
         public int CardValue(string cardValue)
         {

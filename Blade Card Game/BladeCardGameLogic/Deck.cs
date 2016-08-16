@@ -76,8 +76,6 @@ namespace BladeCardGameLogic
             return returnCard;
         }
 
-
-
         public int RemaningCards()
         {
             return cards.Count;

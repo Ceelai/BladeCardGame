@@ -57,6 +57,14 @@ namespace Blade_Card_Game
 
                     _txtPlayerScore.Text = Convert.ToString(_game.CardValue(playerCardImage));
                     _txtAiScore.Text = Convert.ToString(_game.CardValue(aiCardImage));
+
+                    aiScore = Convert.ToInt32(_txtAiScore.Text);
+                    playerScore = Convert.ToInt32(_txtPlayerScore.Text);
+
+                    if (aiScore < playerScore)
+                    {
+                        playerTurn = false;
+                    }
                 }
                 else
                 {
@@ -77,10 +85,9 @@ namespace Blade_Card_Game
             
             string card = "";
             string aiCard = "";
+
             var playerCards = new[] { _playerCard1, _playerCard2, _playerCard3, _playerCard4, _playerCard5, _playerCard6, _playerCard7, _playerCard8, _playerCard9, _playerCard10};
             var aiCards = new[] { _aiCard1, _aiCard2, _aiCard3, _aiCard4, _aiCard5, _aiCard6, _aiCard7, _aiCard8, _aiCard9, _aiCard10};
-            //ask the game to play a round 
-            _game.RoundWinner();
             
             if (startButton == true)
             {
@@ -93,7 +100,6 @@ namespace Blade_Card_Game
                     aiCards[i].Source = new BitmapImage(new Uri(aiCard));
                     playerCards[i].Source = new BitmapImage(new Uri(card));
                     i++;
-
                 }
             }
         }
@@ -134,6 +140,7 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
+                whoWon();
             }
         }
 
@@ -149,6 +156,7 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
+                whoWon();
             }
         }
 
@@ -164,6 +172,7 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
+                whoWon();
             }
         }
 
@@ -179,6 +188,7 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
+                whoWon();
             }
         }
 
@@ -194,6 +204,7 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
+                whoWon();
             }
         }
 
@@ -209,6 +220,7 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
+                whoWon();
             }
         }
 
@@ -224,6 +236,7 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
+                whoWon();
             }
         }
 
@@ -239,6 +252,7 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
+                whoWon();
             }
         }
 
@@ -254,6 +268,7 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
+                whoWon();
             }
         }
 
@@ -269,6 +284,7 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
+                whoWon();
             }
         }
 
@@ -417,6 +433,34 @@ namespace Blade_Card_Game
 
                 _txtPlayerScore.Text = Convert.ToString(playerScore);
                 playerTurn = false;
+            }
+        }
+
+        private async void whoWon()
+        {
+            aiScore = Convert.ToInt32(_txtAiScore.Text);
+            playerScore = Convert.ToInt32(_txtPlayerScore.Text);
+
+            if (aiScore > playerScore)
+            {
+                
+                startButton = false;
+                var message = new MessageDialog("Player 2 has won game!!");
+                await message.ShowAsync();
+            }
+            else if (aiScore < playerScore)
+            {
+                
+                startButton = false;
+                var message = new MessageDialog("Player 1 has won game!!");
+                await message.ShowAsync();
+            }
+            else if (aiScore == playerScore)
+            {
+                
+                startButton = false;
+                var message = new MessageDialog("Game is a tie!!");
+                await message.ShowAsync();
             }
         }
 
