@@ -20,11 +20,12 @@ namespace Blade_Card_Game
         private Score score = new Score();
         private Game _game = new Game();
         private Deck deck = new Deck();
-        private static readonly BitmapImage s_cardBackImage;
+
         private List<Cards> playerDrawedCard = new List<Cards>();
         private List<Cards> aiDrawedCard = new List<Cards>();
         private List<Cards> cardsInHand = new List<Cards>();
         private List<Cards> aiCardsInHand = new List<Cards>();
+
         private string playerCardImage;
         private string aiCardImage;
         
@@ -32,18 +33,11 @@ namespace Blade_Card_Game
         private int aiScore = 0;
 
         private bool startButton = false;
-        static MainPage()
-        {
+        private bool playerTurn = true;
 
-            s_cardBackImage = new BitmapImage(new Uri("ms-appx:///Assets/card back.gif"));
-        }
         public MainPage()
         {
             this.InitializeComponent();
-
-
-
-
         }
 
         //Method for distributing the cards when the deck is clicked. 
@@ -72,9 +66,6 @@ namespace Blade_Card_Game
                     startButton = false;
                 }
             }
-
-
-
         }
 
         //Method for starting the game
@@ -104,30 +95,6 @@ namespace Blade_Card_Game
                     i++;
 
                 }
-            }
-            
-
-            // figures out if the player card is either greater or small than the card and adds the score to the 
-            //player respectively 
-            if (_game._playerValue > _game._dealerValue)
-            {
-                score.PlayerScore();
-                //converts textblock into the players score value in string format 
-                _txtPlayerScore.Text = score.PlayerScore().ToString();
-            }
-
-            //same thing as above but for the dealer 
-            if (_game._playerValue < _game._dealerValue)
-            {
-                score.DealerScore();
-                _txtAiScore.Text = score.DealerScore().ToString();
-            }
-
-            
-            //just in case something blows up, we have this message to save the day xD
-            else
-            {
-                var message = new MessageDialog("Something went wrong :(. Contact game dev for this issue.");
             }
         }
 
