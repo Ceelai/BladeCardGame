@@ -75,8 +75,8 @@
                         <CompositeTransform TranslateX="1.713" TranslateY="-17.566"/>
                     </Image.RenderTransform>
                 </Image>
-                <TextBlock x:Name="_txtAI" HorizontalAlignment="Left" TextWrapping="Wrap" Text="AI: " VerticalAlignment="Top" Margin="30,127,0,0" FontSize="80" Foreground="White"/>
-                <TextBlock x:Name="_txtPlayer" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Player: " VerticalAlignment="Top" Margin="30,699,0,0" FontSize="80" Foreground="White"/>
+                <TextBlock x:Name="_txtAI" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Player 2:" VerticalAlignment="Top" Margin="30,389,0,0" FontSize="80" Foreground="White"/>
+                <TextBlock x:Name="_txtPlayer" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Player 1: " VerticalAlignment="Top" Margin="30,573,0,0" FontSize="80" Foreground="White"/>
                 <Image x:Name="_aiCard1" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="960,38,833,864" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5" Tapped="_aiCard1_Tapped">
                     <Image.RenderTransform>
                         <CompositeTransform TranslateX="284.574" TranslateY="2.887"/>
@@ -132,7 +132,7 @@
                         <CompositeTransform Rotation="0.571"/>
                     </Image.RenderTransform>
                 </Image>
-                <TextBlock x:Name="_txtPlayerScore" HorizontalAlignment="Left" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="314,683,0,0" Height="122" Width="196" FontSize="100" Foreground="White"/>
+                <TextBlock x:Name="_txtPlayerScore" HorizontalAlignment="Left" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="338,566,0,0" Height="122" Width="196" FontSize="90" Foreground="#FF00FF17"/>
                 <Grid Margin="534,595,533,275">
 
                     <Image x:Name="image_Copy" HorizontalAlignment="Left" Height="199" VerticalAlignment="Top" Width="833" Margin="10,-3,0,0" Source="Assets/Abstract-Grey-Wallpaper-Pattern-Image-Mac-HD-Picture.jpg" Stretch="UniformToFill"/>
@@ -163,7 +163,7 @@
                 <Image x:Name="_aiPlayedCard9" HorizontalAlignment="Left" Height="178" VerticalAlignment="Top" Width="127" Margin="1115,296,0,0"/>
                 <Image x:Name="_aiPlayedCard10" HorizontalAlignment="Left" Height="178" VerticalAlignment="Top" Width="127" Margin="1177,296,0,0"/>
             </Grid>
-            <TextBlock x:Name="_txtAiScore" HorizontalAlignment="Left" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="225,112,0,0" Height="120" Width="202" FontSize="100" Foreground="White"/>
+            <TextBlock x:Name="_txtAiScore" HorizontalAlignment="Left" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="337,382,0,0" Height="120" Width="202" FontSize="90" Foreground="#FF00FF17"/>
         </Grid>
     </Viewbox>
 </Page>
