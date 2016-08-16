@@ -196,23 +196,20 @@ namespace BladeCardGameLogic
                     StreamWriter write = new StreamWriter(aFile);
 
 
-                    string updatescore = _playerScore.ToString();
+
 
                     string newscore = "1";
-
+                    //if the file has not been created yet, add the initial 1 to it 
                     if (line == "")
                     {
 
                         write.WriteLine($"{newscore}");
 
                     }
-
+                    //if the file has been created, add the score thats already there plus 1 
                     else
                     {
-                        line = line + newscore;
-
-
-
+                        line += newscore;
                     }
 
                 }
@@ -220,7 +217,8 @@ namespace BladeCardGameLogic
 
                 catch (IOException e)
                 {
-
+                    var message = new MessageDialog("BRO U SCORE DUN GOOFED, hehe xD");
+                    return;
                 }
 
 
