@@ -5,7 +5,6 @@ using Windows.UI.Xaml.Media.Imaging;
 using BladeCardGameLogic;
 using System.Collections.Generic;
 using Windows.UI.Popups;
-using System.Threading;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -17,7 +16,6 @@ namespace Blade_Card_Game
     public sealed partial class MainPage : Page
     {
 
-        private Score score = new Score();
         private Game _game = new Game();
         private Deck deck = new Deck();
 
