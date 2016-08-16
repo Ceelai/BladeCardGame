@@ -184,6 +184,8 @@ namespace BladeCardGameLogic
                 //this piece of snickerdoodle reads to goddamn text file 
                 StreamReader sr = new StreamReader(aFile);
 
+
+
                 //this reads the lines found inside the .txt file 
                 line = sr.ReadLine();
 
@@ -196,9 +198,22 @@ namespace BladeCardGameLogic
 
                     string updatescore = _playerScore.ToString();
 
-                    write.WriteLine(updatescore);
+                    string newscore = "1";
+
+                    if (line == "")
+                    {
+
+                        write.WriteLine($"{newscore}");
+
+                    }
+
+                    else
+                    {
+                        line = line + newscore;
 
 
+
+                    }
 
                 }
 
