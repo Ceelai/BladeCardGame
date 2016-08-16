@@ -89,7 +89,7 @@ namespace Blade_Card_Game
             var playerCards = new[] { _playerCard1, _playerCard2, _playerCard3, _playerCard4, _playerCard5, _playerCard6, _playerCard7, _playerCard8, _playerCard9, _playerCard10};
             var aiCards = new[] { _aiCard1, _aiCard2, _aiCard3, _aiCard4, _aiCard5, _aiCard6, _aiCard7, _aiCard8, _aiCard9, _aiCard10};
             //ask the game to play a round 
-            _game.PlayRound();
+            _game.RoundWinner();
             
             if (startButton == true)
             {

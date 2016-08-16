@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Popups;
 
 namespace BladeCardGameLogic
 {
@@ -59,7 +61,7 @@ namespace BladeCardGameLogic
         }
 
         //The "Start" method of the game. Will run when the users are ready to play. 
-        public void PlayRound()
+        public void RoundWinner()
         {
 
         }
@@ -166,5 +168,33 @@ namespace BladeCardGameLogic
             }
             return value;
         }
+
+        public void  SaveData()
+        {
+            try
+
+            {
+                FileStream aFile = new FileStream("SaveFile.txt", FileMode.OpenOrCreate);
+
+                StreamWriter write = new StreamWriter(aFile);
+
+                string updatescore = _playerScore.ToString();
+
+                write.WriteLineAsync(_playerScore.ToString());
+
+                
+
+                
+
+
+            }
+
+            catch (IOException e)
+            {
+                var message = new MessageDialog("Call 1866 WOW DEAL, and GETAWAY FOR LESS");
+                return;
+            }
+        }
+          
     }
 }
