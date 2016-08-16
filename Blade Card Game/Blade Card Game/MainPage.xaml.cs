@@ -49,7 +49,7 @@ namespace Blade_Card_Game
         //Method for distributing the cards when the deck is clicked. 
         private async void _playerDeck_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (startButton == true && _playerPlayedCard1.Source == null)
+            if (startButton == true && _playerDeckCard.Source == null)
             {
                 if (playerDrawedCard.Count < 12)
                 {
@@ -58,8 +58,8 @@ namespace Blade_Card_Game
 
                     playerCardImage = $"ms-appx:///Assets/card {playerDrawedCard[playerDrawedCard.Count - 1].Face}.gif";
                     aiCardImage = $"ms-appx:///Assets/card {aiDrawedCard[aiDrawedCard.Count - 1].Face}.gif";
-                    _playerPlayedCard1.Source = new BitmapImage(new Uri(playerCardImage));
-                    _aiPlayedCard1.Source = new BitmapImage(new Uri(aiCardImage));
+                    _playerDeckCard.Source = new BitmapImage(new Uri(playerCardImage));
+                    _aiDeckCard.Source = new BitmapImage(new Uri(aiCardImage));
 
                     _txtPlayerScore.Text = Convert.ToString(_game.CardValue(playerCardImage));
                     _txtAiScore.Text = Convert.ToString(_game.CardValue(aiCardImage));
@@ -146,90 +146,141 @@ namespace Blade_Card_Game
 
         private void _playerCard1_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if(_playerCard1.Visibility != Visibility.Collapsed)
+            if(_playerCard1.Visibility != Visibility.Collapsed && _playerDeckCard.Source != null)
             {
                 emptySlot(_playerCard1);
                 _playerCard1.Visibility = Visibility.Collapsed;
+
+                playerCardImage = $"ms-appx:///Assets/card {cardsInHand[0].Face}.gif";
+                playerScore = Convert.ToInt32(_txtPlayerScore.Text) + _game.CardValue(playerCardImage);
+
+                _txtPlayerScore.Text = Convert.ToString(playerScore);
             }
         }
 
         private void _playerCard2_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_playerCard2.Visibility != Visibility.Collapsed)
+            if (_playerCard2.Visibility != Visibility.Collapsed && _playerDeckCard.Source != null)
             {
-                emptySlot(_playerCard1);
+                emptySlot(_playerCard2);
                 _playerCard2.Visibility = Visibility.Collapsed;
+
+                playerCardImage = $"ms-appx:///Assets/card {cardsInHand[1].Face}.gif";
+                playerScore = Convert.ToInt32(_txtPlayerScore.Text) + _game.CardValue(playerCardImage);
+
+                _txtPlayerScore.Text = Convert.ToString(playerScore);
             }
         }
 
         private void _playerCard3_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_playerCard3.Visibility != Visibility.Collapsed)
+            if (_playerCard3.Visibility != Visibility.Collapsed && _playerDeckCard.Source != null)
             {
-                emptySlot(_playerCard1);
+                emptySlot(_playerCard3);
                 _playerCard3.Visibility = Visibility.Collapsed;
+
+                playerCardImage = $"ms-appx:///Assets/card {cardsInHand[2].Face}.gif";
+                playerScore = Convert.ToInt32(_txtPlayerScore.Text) + _game.CardValue(playerCardImage);
+
+                _txtPlayerScore.Text = Convert.ToString(playerScore);
             }
         }
         private void _playerCard4_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_playerCard4.Visibility != Visibility.Collapsed)
+            if (_playerCard4.Visibility != Visibility.Collapsed && _playerDeckCard.Source != null)
             {
-                emptySlot(_playerCard1);
+                emptySlot(_playerCard4);
                 _playerCard4.Visibility = Visibility.Collapsed;
+
+                playerCardImage = $"ms-appx:///Assets/card {cardsInHand[3].Face}.gif";
+                playerScore = Convert.ToInt32(_txtPlayerScore.Text) + _game.CardValue(playerCardImage);
+
+                _txtPlayerScore.Text = Convert.ToString(playerScore);
             }
         }
         private void _playerCard5_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_playerCard5.Visibility != Visibility.Collapsed)
+            if (_playerCard5.Visibility != Visibility.Collapsed && _playerDeckCard.Source != null)
             {
-                emptySlot(_playerCard1);
+                emptySlot(_playerCard5);
                 _playerCard5.Visibility = Visibility.Collapsed;
+
+                playerCardImage = $"ms-appx:///Assets/card {cardsInHand[4].Face}.gif";
+                playerScore = Convert.ToInt32(_txtPlayerScore.Text) + _game.CardValue(playerCardImage);
+
+                _txtPlayerScore.Text = Convert.ToString(playerScore);
             }
         }
 
         private void _playerCard6_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_playerCard6.Visibility != Visibility.Collapsed)
+            if (_playerCard6.Visibility != Visibility.Collapsed && _playerDeckCard.Source != null)
             {
-                emptySlot(_playerCard1);
+                emptySlot(_playerCard6);
                 _playerCard6.Visibility = Visibility.Collapsed;
+
+                playerCardImage = $"ms-appx:///Assets/card {cardsInHand[5].Face}.gif";
+                playerScore = Convert.ToInt32(_txtPlayerScore.Text) + _game.CardValue(playerCardImage);
+
+                _txtPlayerScore.Text = Convert.ToString(playerScore);
             }
         }
 
         private void _playerCard7_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_playerCard7.Visibility != Visibility.Collapsed)
+            if (_playerCard7.Visibility != Visibility.Collapsed && _playerDeckCard.Source != null)
             {
-                emptySlot(_playerCard1);
+                emptySlot(_playerCard7);
                 _playerCard7.Visibility = Visibility.Collapsed;
+
+                playerCardImage = $"ms-appx:///Assets/card {cardsInHand[6].Face}.gif";
+                playerScore = Convert.ToInt32(_txtPlayerScore.Text) + _game.CardValue(playerCardImage);
+
+                _txtPlayerScore.Text = Convert.ToString(playerScore);
             }
         }
 
         private void _playerCard8_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_playerCard8.Visibility != Visibility.Collapsed)
+            if (_playerCard8.Visibility != Visibility.Collapsed && _playerDeckCard.Source != null)
             {
-                emptySlot(_playerCard1);
+                emptySlot(_playerCard8);
                 _playerCard8.Visibility = Visibility.Collapsed;
+
+                playerCardImage = $"ms-appx:///Assets/card {cardsInHand[7].Face}.gif";
+                playerScore = Convert.ToInt32(_txtPlayerScore.Text) + _game.CardValue(playerCardImage);
+
+                _txtPlayerScore.Text = Convert.ToString(playerScore);
             }
         }
 
         private void _playerCard9_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_playerCard9.Visibility != Visibility.Collapsed)
+            if (_playerCard9.Visibility != Visibility.Collapsed && _playerDeckCard.Source != null)
             {
-                emptySlot(_playerCard1);
+                emptySlot(_playerCard9);
                 _playerCard9.Visibility = Visibility.Collapsed;
+
+                playerCardImage = $"ms-appx:///Assets/card {cardsInHand[8].Face}.gif";
+                playerScore = Convert.ToInt32(_txtPlayerScore.Text) + _game.CardValue(playerCardImage);
+
+                _txtPlayerScore.Text = Convert.ToString(playerScore);
             }
         }
 
         private void _playerCard10_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_playerCard10.Visibility != Visibility.Collapsed)
+            if (_playerCard10.Visibility != Visibility.Collapsed && _playerDeckCard.Source != null)
             {
-                emptySlot(_playerCard1);
+                emptySlot(_playerCard10);
                 _playerCard10.Visibility = Visibility.Collapsed;
+
+                playerCardImage = $"ms-appx:///Assets/card {cardsInHand[9].Face}.gif";
+                playerScore = Convert.ToInt32(_txtPlayerScore.Text) + _game.CardValue(playerCardImage);
+
+                _txtPlayerScore.Text = Convert.ToString(playerScore);
             }
         }
+
     }
 }

@@ -34,43 +34,43 @@
                         <CompositeTransform TranslateX="-2.495" TranslateY="14.662"/>
                     </Image.RenderTransform>
                 </Image>
-                <Image x:Name="_playerCard3" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="696,860,1097,42" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5">
+                <Image x:Name="_playerCard3" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="696,860,1097,42" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5" Tapped="_playerCard3_Tapped">
                     <Image.RenderTransform>
                         <CompositeTransform TranslateX="-2.996" TranslateY="11.397"/>
                     </Image.RenderTransform>
                 </Image>
-                <Image x:Name="_playerCard4" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="771,865,1022,37" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5">
+                <Image x:Name="_playerCard4" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="771,865,1022,37" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5" Tapped="_playerCard4_Tapped">
                     <Image.RenderTransform>
                         <CompositeTransform TranslateX="-3.566" TranslateY="7.241"/>
                     </Image.RenderTransform>
                 </Image>
-                <Image x:Name="_playerCard5" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="848,868,945,34" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5">
+                <Image x:Name="_playerCard5" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="848,868,945,34" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5" Tapped="_playerCard5_Tapped">
                     <Image.RenderTransform>
                         <CompositeTransform TranslateX="-3.808" TranslateY="3.314"/>
                     </Image.RenderTransform>
                 </Image>
-                <Image x:Name="_playerCard6" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="927,871,866,31" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5">
+                <Image x:Name="_playerCard6" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="927,871,866,31" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5" Tapped="_playerCard6_Tapped">
                     <Image.RenderTransform>
                         <CompositeTransform TranslateX="-3.346" TranslateY="-0.065"/>
                     </Image.RenderTransform>
                 </Image>
-                <Image x:Name="_playerCard7" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="1005,874,788,28" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5">
+                <Image x:Name="_playerCard7" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="1005,874,788,28" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5" Tapped="_playerCard7_Tapped">
                     <Image.RenderTransform>
                         <CompositeTransform TranslateX="-3.235" TranslateY="-3.138"/>
                     </Image.RenderTransform>
                 </Image>
                 <Image x:Name="_playerDeck" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="179,841,1614,51" Source="Assets/Deck.gif" Tapped="_playerDeck_Tapped"/>
-                <Image x:Name="_playerCard8" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="1080,882,713,20" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5">
+                <Image x:Name="_playerCard8" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="1080,882,713,20" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5" Tapped="_playerCard8_Tapped">
                     <Image.RenderTransform>
                         <CompositeTransform TranslateX="-1.302" TranslateY="-11.082"/>
                     </Image.RenderTransform>
                 </Image>
-                <Image x:Name="_playerCard9" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="1158,885,635,17" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5">
+                <Image x:Name="_playerCard9" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="1158,885,635,17" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5" Tapped="_playerCard9_Tapped">
                     <Image.RenderTransform>
                         <CompositeTransform TranslateX="0.28" TranslateY="-15.025"/>
                     </Image.RenderTransform>
                 </Image>
-                <Image x:Name="_playerCard10" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="1235,888,558,14" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5">
+                <Image x:Name="_playerCard10" HorizontalAlignment="Center" Height="178" VerticalAlignment="Center" Width="127" Margin="1235,888,558,14" Source="Assets/card back.gif" RenderTransformOrigin="0.5,0.5" Tapped="_playerCard10_Tapped">
                     <Image.RenderTransform>
                         <CompositeTransform TranslateX="1.713" TranslateY="-17.566"/>
                     </Image.RenderTransform>
@@ -151,6 +151,7 @@
                     <Image x:Name="_playerPlayedCard10" HorizontalAlignment="Left" Height="178" VerticalAlignment="Top" Width="127" Margin="642,8,0,0"/>
                 </Grid>
                 <Button x:Name="_btnStart" Content="Start Game!" HorizontalAlignment="Left" Margin="1507,846,0,0" VerticalAlignment="Top" Height="170" Width="323" FontSize="50" Tapped="_btnStart_Tapped" Background="{x:Null}" Foreground="White" FontStyle="Italic" FontWeight="ExtraBlack"/>
+                <Image x:Name="_aiDeckCard" HorizontalAlignment="Left" Height="178" VerticalAlignment="Top" Width="127" Margin="545,296,0,0"/>
                 <Image x:Name="_aiPlayedCard1" HorizontalAlignment="Left" Height="178" VerticalAlignment="Top" Width="127" Margin="618,296,0,0"/>
                 <Image x:Name="_aiPlayedCard2" HorizontalAlignment="Left" Height="178" VerticalAlignment="Top" Width="127" Margin="669,296,0,0" Source="Assets/card 1.gif"/>
                 <Image x:Name="_aiPlayedCard3" HorizontalAlignment="Left" Height="178" VerticalAlignment="Top" Width="127" Margin="729,296,0,0" Source="Assets/card 1.gif"/>
