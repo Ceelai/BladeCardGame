@@ -33,11 +33,45 @@ namespace Blade_Card_Game
 
         private bool startButton = false;
         private bool playerTurn = true;
+        private bool cardDrawn = false;
 
 
         public MainPage()
         {
             this.InitializeComponent();
+        }
+
+        private void Reset()
+        {
+            var playerCards = new[] { _playerCard1, _playerCard2, _playerCard3, _playerCard4, _playerCard5, _playerCard6, _playerCard7, _playerCard8, _playerCard9, _playerCard10 };
+            var aiCards = new[] { _aiCard1, _aiCard2, _aiCard3, _aiCard4, _aiCard5, _aiCard6, _aiCard7, _aiCard8, _aiCard9, _aiCard10 };
+            var aiCardArea = new[] { _aiPlayedCard1, _aiPlayedCard2, _aiPlayedCard3, _aiPlayedCard4, _aiPlayedCard5, _aiPlayedCard6, _aiPlayedCard7, _aiPlayedCard8, _aiPlayedCard9, _aiPlayedCard10 };
+            var playerCardArea = new[] { _playerPlayedCard1, _playerPlayedCard2, _playerPlayedCard3, _playerPlayedCard4, _playerPlayedCard5, _playerPlayedCard6, _playerPlayedCard7, _playerPlayedCard8, _playerPlayedCard9, _playerPlayedCard10 };
+            
+            for (int i = 0; i < 10; i++)
+            {
+                aiCardArea[i].Source = null;
+                aiCards[i].Source = null;
+                aiCards[i].Visibility = Visibility.Visible;
+
+                playerCardArea[i].Source = null;
+                playerCards[i].Source = null;
+                playerCards[i].Visibility = Visibility.Visible;
+            }
+            aiDrawedCard = new List<Cards>();
+            playerDrawedCard = new List<Cards>();
+            aiCardsInHand = new List<Cards>();
+            cardsInHand = new List<Cards>();
+
+            _txtAiScore.Text = "0";
+            _txtPlayerScore.Text = "0";
+
+            _playerDeckCard.Source = null;
+            _aiDeckCard.Source = null;
+
+            _btnStart.Visibility = Visibility.Visible;
+            startButton = false;
+            cardDrawn = false;
         }
 
         //Method for distributing the cards when the deck is clicked. 
@@ -70,13 +104,14 @@ namespace Blade_Card_Game
                     {
                         firstTurn = "player";
                     }
+                    cardDrawn = true;
                 }
                 else
                 {
                     _playerDeck.Visibility = Visibility.Collapsed;
                     var message = new MessageDialog("There are no more cards! Game is a tie.");
                     await message.ShowAsync();
-                    startButton = false;
+                    Reset();
                 }
             }
         }
@@ -109,33 +144,33 @@ namespace Blade_Card_Game
             }
         }
 
-        private void isItBolt(int i, string player)
+        private void IsItBolt(int i, string player)
         {
             if (player == "ai")
             {
                 if (aiCardsInHand[i].Face == Face.bolt)
                 {
-                    boltCard(player);
+                    BoltCard(player);
                 }
                 else if (aiCardsInHand[i].Face == Face.mirror)
                 {
-                    mirrorCard();
+                    MirrorCard();
                 }
             }
             else if(player == "player")
             {
                 if (cardsInHand[i].Face == Face.bolt)
                 {
-                    boltCard(player);
+                    BoltCard(player);
                 }
                 else if (cardsInHand[i].Face == Face.mirror)
                 {
-                    mirrorCard();
+                    MirrorCard();
                 }
             }
         }
 
-        private void mirrorCard()
+        private void MirrorCard()
         {
             var aiCardArea = new[] { _aiPlayedCard1, _aiPlayedCard2, _aiPlayedCard3, _aiPlayedCard4, _aiPlayedCard5, _aiPlayedCard6, _aiPlayedCard7, _aiPlayedCard8, _aiPlayedCard9, _aiPlayedCard10 };
             var playerCardArea = new[] { _playerPlayedCard1, _playerPlayedCard2, _playerPlayedCard3, _playerPlayedCard4, _playerPlayedCard5, _playerPlayedCard6, _playerPlayedCard7, _playerPlayedCard8, _playerPlayedCard9, _playerPlayedCard10 };
@@ -151,17 +186,21 @@ namespace Blade_Card_Game
             _txtPlayerScore.Text = tempScore;
         }
 
-        private void boltCard(string player)
+        private void BoltCard(string player)
         {
             if(player == "player")
             {
                 var cardArea = new[] { _aiPlayedCard1, _aiPlayedCard2, _aiPlayedCard3, _aiPlayedCard4, _aiPlayedCard5, _aiPlayedCard6, _aiPlayedCard7, _aiPlayedCard8, _aiPlayedCard9, _aiPlayedCard10 };
-                for (int i = 9; i > 0; i--)
+                for (int i = 9; i > -1; i--)
                 {
                     if (cardArea[i].Source != null)
                     {
                         cardArea[i].Source = null;
                         break;
+                    }
+                    else if(i == 0)
+                    {
+                        _aiDeckCard.Source = null;
                     }
                 }
                 aiScore = Convert.ToInt32(_txtAiScore.Text) - _game.CardValue(aiCardImage);
@@ -170,12 +209,16 @@ namespace Blade_Card_Game
             else if(player == "ai")
             {
                 var cardArea = new[] { _playerPlayedCard1, _playerPlayedCard2, _playerPlayedCard3, _playerPlayedCard4, _playerPlayedCard5, _playerPlayedCard6, _playerPlayedCard7, _playerPlayedCard8, _playerPlayedCard9, _playerPlayedCard10 };
-                for (int i = 9; i > 0; i--)
+                for (int i = 9; i > -1; i--)
                 {
                     if (cardArea[i].Source != null)
                     {
                         cardArea[i].Source = null;
                         break;
+                    }
+                    else if (i == 0)
+                    {
+                        _playerDeckCard.Source = null;
                     }
                 }
                 playerScore = Convert.ToInt32(_txtPlayerScore.Text) - _game.CardValue(playerCardImage);
@@ -209,7 +252,7 @@ namespace Blade_Card_Game
         }
         private void _aiCard1_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_aiCard1.Visibility != Visibility.Collapsed && _aiDeckCard.Source != null && playerTurn == false)
+            if (_aiCard1.Visibility != Visibility.Collapsed && playerTurn == false && cardDrawn == true)
             {
                 aiEmptySlot(_aiCard1);
                 _aiCard1.Visibility = Visibility.Collapsed;
@@ -219,14 +262,14 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
-                isItBolt(0, "ai");
+                IsItBolt(0, "ai");
                 whoWon("ai");
             }
         }
 
         private void _aiCard2_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_aiCard2.Visibility != Visibility.Collapsed && _aiDeckCard.Source != null && playerTurn == false)
+            if (_aiCard2.Visibility != Visibility.Collapsed && cardDrawn == true && playerTurn == false)
             {
                 aiEmptySlot(_aiCard2);
                 _aiCard2.Visibility = Visibility.Collapsed;
@@ -236,14 +279,14 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
-                isItBolt(1, "ai");
+                IsItBolt(1, "ai");
                 whoWon("ai");
             }
         }
 
         private void _aiCard3_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_aiCard3.Visibility != Visibility.Collapsed && _aiDeckCard.Source != null && playerTurn == false)
+            if (_aiCard3.Visibility != Visibility.Collapsed && cardDrawn == true && playerTurn == false)
             {
                 aiEmptySlot(_aiCard3);
                 _aiCard3.Visibility = Visibility.Collapsed;
@@ -253,14 +296,14 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
-                isItBolt(2, "ai");
+                IsItBolt(2, "ai");
                 whoWon("ai");
             }
         }
 
         private void _aiCard4_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_aiCard4.Visibility != Visibility.Collapsed && _aiDeckCard.Source != null && playerTurn == false)
+            if (_aiCard4.Visibility != Visibility.Collapsed && cardDrawn == true && playerTurn == false)
             {
                 aiEmptySlot(_aiCard4);
                 _aiCard4.Visibility = Visibility.Collapsed;
@@ -270,14 +313,14 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
-                isItBolt(3, "ai");
+                IsItBolt(3, "ai");
                 whoWon("ai");
             }
         }
 
         private void _aiCard5_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_aiCard5.Visibility != Visibility.Collapsed && _aiDeckCard.Source != null && playerTurn == false)
+            if (_aiCard5.Visibility != Visibility.Collapsed && cardDrawn == true && playerTurn == false)
             {
                 aiEmptySlot(_aiCard5);
                 _aiCard5.Visibility = Visibility.Collapsed;
@@ -287,14 +330,14 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
-                isItBolt(4, "ai");
+                IsItBolt(4, "ai");
                 whoWon("ai");
             }
         }
 
         private void _aiCard6_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_aiCard6.Visibility != Visibility.Collapsed && _aiDeckCard.Source != null && playerTurn == false)
+            if (_aiCard6.Visibility != Visibility.Collapsed && cardDrawn == true && playerTurn == false)
             {
                 aiEmptySlot(_aiCard6);
                 _aiCard6.Visibility = Visibility.Collapsed;
@@ -304,14 +347,14 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
-                isItBolt(5, "ai");
+                IsItBolt(5, "ai");
                 whoWon("ai");
             }
         }
 
         private void _aiCard7_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_aiCard1.Visibility != Visibility.Collapsed && _aiDeckCard.Source != null && playerTurn == false)
+            if (_aiCard1.Visibility != Visibility.Collapsed && cardDrawn == true && playerTurn == false)
             {
                 aiEmptySlot(_aiCard7);
                 _aiCard7.Visibility = Visibility.Collapsed;
@@ -321,14 +364,14 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
-                isItBolt(6, "ai");
+                IsItBolt(6, "ai");
                 whoWon("ai");
             }
         }
 
         private void _aiCard8_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_aiCard8.Visibility != Visibility.Collapsed && _aiDeckCard.Source != null && playerTurn == false)
+            if (_aiCard8.Visibility != Visibility.Collapsed && cardDrawn == true && playerTurn == false)
             {
                 aiEmptySlot(_aiCard8);
                 _aiCard8.Visibility = Visibility.Collapsed;
@@ -338,14 +381,14 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
-                isItBolt(7, "ai");
+                IsItBolt(7, "ai");
                 whoWon("ai");
             }
         }
 
         private void _aiCard9_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_aiCard9.Visibility != Visibility.Collapsed && _aiDeckCard.Source != null && playerTurn == false)
+            if (_aiCard9.Visibility != Visibility.Collapsed && cardDrawn == true && playerTurn == false)
             {
                 aiEmptySlot(_aiCard9);
                 _aiCard9.Visibility = Visibility.Collapsed;
@@ -355,14 +398,14 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
-                isItBolt(8, "ai");
+                IsItBolt(8, "ai");
                 whoWon("ai");
             }
         }
 
         private void _aiCard10_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_aiCard10.Visibility != Visibility.Collapsed && _aiDeckCard.Source != null && playerTurn == false)
+            if (_aiCard10.Visibility != Visibility.Collapsed && cardDrawn == true && playerTurn == false)
             {
                 aiEmptySlot(_aiCard10);
                 _aiCard10.Visibility = Visibility.Collapsed;
@@ -372,14 +415,14 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
-                isItBolt(9, "ai");
+                IsItBolt(9, "ai");
                 whoWon("ai");
             }
         }
 
         private void _playerCard1_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if(_playerCard1.Visibility != Visibility.Collapsed && _playerDeckCard.Source != null && playerTurn == true)
+            if(_playerCard1.Visibility != Visibility.Collapsed && cardDrawn == true && playerTurn == true)
             {
                 playeremptySlot(_playerCard1);
                 _playerCard1.Visibility = Visibility.Collapsed;
@@ -389,14 +432,14 @@ namespace Blade_Card_Game
 
                 _txtPlayerScore.Text = Convert.ToString(playerScore);
                 playerTurn = false;
-                isItBolt(0, "player");
+                IsItBolt(0, "player");
                 whoWon("player");
             }
         }
 
         private void _playerCard2_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_playerCard2.Visibility != Visibility.Collapsed && _playerDeckCard.Source != null && playerTurn == true)
+            if (_playerCard2.Visibility != Visibility.Collapsed && cardDrawn == true && playerTurn == true)
             {
                 playeremptySlot(_playerCard2);
                 _playerCard2.Visibility = Visibility.Collapsed;
@@ -406,14 +449,14 @@ namespace Blade_Card_Game
 
                 _txtPlayerScore.Text = Convert.ToString(playerScore);
                 playerTurn = false;
-                isItBolt(1, "player");
+                IsItBolt(1, "player");
                 whoWon("player");
             }
         }
 
         private void _playerCard3_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_playerCard3.Visibility != Visibility.Collapsed && _playerDeckCard.Source != null && playerTurn == true)
+            if (_playerCard3.Visibility != Visibility.Collapsed && cardDrawn == true && playerTurn == true)
             {
                 playeremptySlot(_playerCard3);
                 _playerCard3.Visibility = Visibility.Collapsed;
@@ -423,13 +466,13 @@ namespace Blade_Card_Game
 
                 _txtPlayerScore.Text = Convert.ToString(playerScore);
                 playerTurn = false;
-                isItBolt(2, "player");
+                IsItBolt(2, "player");
                 whoWon("player");
             }
         }
         private void _playerCard4_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_playerCard4.Visibility != Visibility.Collapsed && _playerDeckCard.Source != null && playerTurn == true)
+            if (_playerCard4.Visibility != Visibility.Collapsed && cardDrawn == true && playerTurn == true)
             {
                 playeremptySlot(_playerCard4);
                 _playerCard4.Visibility = Visibility.Collapsed;
@@ -439,13 +482,13 @@ namespace Blade_Card_Game
 
                 _txtPlayerScore.Text = Convert.ToString(playerScore);
                 playerTurn = false;
-                isItBolt(3, "player");
+                IsItBolt(3, "player");
                 whoWon("player");
             }
         }
         private void _playerCard5_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_playerCard5.Visibility != Visibility.Collapsed && _playerDeckCard.Source != null && playerTurn == true)
+            if (_playerCard5.Visibility != Visibility.Collapsed && cardDrawn == true && playerTurn == true)
             {
                 playeremptySlot(_playerCard5);
                 _playerCard5.Visibility = Visibility.Collapsed;
@@ -455,14 +498,14 @@ namespace Blade_Card_Game
 
                 _txtPlayerScore.Text = Convert.ToString(playerScore);
                 playerTurn = false;
-                isItBolt(4, "player");
+                IsItBolt(4, "player");
                 whoWon("player");
             }
         }
 
         private void _playerCard6_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_playerCard6.Visibility != Visibility.Collapsed && _playerDeckCard.Source != null && playerTurn == true)
+            if (_playerCard6.Visibility != Visibility.Collapsed && cardDrawn == true && playerTurn == true)
             {
                 playeremptySlot(_playerCard6);
                 _playerCard6.Visibility = Visibility.Collapsed;
@@ -472,14 +515,14 @@ namespace Blade_Card_Game
 
                 _txtPlayerScore.Text = Convert.ToString(playerScore);
                 playerTurn = false;
-                isItBolt(5, "player");
+                IsItBolt(5, "player");
                 whoWon("player");
             }
         }
 
         private void _playerCard7_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_playerCard7.Visibility != Visibility.Collapsed && _playerDeckCard.Source != null && playerTurn == true)
+            if (_playerCard7.Visibility != Visibility.Collapsed && cardDrawn == true && playerTurn == true)
             {
                 playeremptySlot(_playerCard7);
                 _playerCard7.Visibility = Visibility.Collapsed;
@@ -489,14 +532,14 @@ namespace Blade_Card_Game
 
                 _txtPlayerScore.Text = Convert.ToString(playerScore);
                 playerTurn = false;
-                isItBolt(6, "player");
+                IsItBolt(6, "player");
                 whoWon("player");
             }
         }
 
         private void _playerCard8_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_playerCard8.Visibility != Visibility.Collapsed && _playerDeckCard.Source != null && playerTurn == true)
+            if (_playerCard8.Visibility != Visibility.Collapsed && cardDrawn == true && playerTurn == true)
             {
                 playeremptySlot(_playerCard8);
                 _playerCard8.Visibility = Visibility.Collapsed;
@@ -506,14 +549,14 @@ namespace Blade_Card_Game
 
                 _txtPlayerScore.Text = Convert.ToString(playerScore);
                 playerTurn = false;
-                isItBolt(7, "player");
+                IsItBolt(7, "player");
                 whoWon("player");
             }
         }
 
         private void _playerCard9_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_playerCard9.Visibility != Visibility.Collapsed && _playerDeckCard.Source != null && playerTurn == true)
+            if (_playerCard9.Visibility != Visibility.Collapsed && cardDrawn == true && playerTurn == true)
             {
                 playeremptySlot(_playerCard9);
                 _playerCard9.Visibility = Visibility.Collapsed;
@@ -523,14 +566,14 @@ namespace Blade_Card_Game
 
                 _txtPlayerScore.Text = Convert.ToString(playerScore);
                 playerTurn = false;
-                isItBolt(8, "player");
+                IsItBolt(8, "player");
                 whoWon("player");
             }
         }
 
         private void _playerCard10_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_playerCard10.Visibility != Visibility.Collapsed && _playerDeckCard.Source != null && playerTurn == true)
+            if (_playerCard10.Visibility != Visibility.Collapsed && cardDrawn == true && playerTurn == true)
             {
                 playeremptySlot(_playerCard10);
                 _playerCard10.Visibility = Visibility.Collapsed;
@@ -540,7 +583,7 @@ namespace Blade_Card_Game
 
                 _txtPlayerScore.Text = Convert.ToString(playerScore);
                 playerTurn = false;
-                isItBolt(9, "player");
+                IsItBolt(9, "player");
                 whoWon("player");
             }
         }
@@ -554,9 +597,9 @@ namespace Blade_Card_Game
             {
                 if (aiScore < playerScore)
                 {
-                    startButton = false;
                     var message = new MessageDialog("Player 1 has won game!!");
                     await message.ShowAsync();
+                    Reset();
                 } 
                 else if(playerScore < aiScore)
                 {
@@ -571,18 +614,37 @@ namespace Blade_Card_Game
                             {
                                 var message = new MessageDialog("Player 2 has won game!!");
                                 await message.ShowAsync();
+                                Reset();
                             }
                         }
                     }
                 }
             }
-            else if(player == "player" && firstTurn == "ai")
+            if (player == "player" && firstTurn == "player")
+            {
+                if (playerScore < aiScore)
+                {
+                    var message = new MessageDialog("Player 2 has won game!!");
+                    await message.ShowAsync();
+                    Reset();
+                }
+            }
+            if (player == "ai" && firstTurn == "ai")
+            {
+                if (playerScore > aiScore)
+                {
+                    var message = new MessageDialog("Player 1 has won game!!");
+                    await message.ShowAsync();
+                    Reset();
+                }
+            }
+            if(player == "player" && firstTurn == "ai")
             {
                 if (aiScore > playerScore)
                 {
-                    startButton = false;
                     var message = new MessageDialog("Player 2 has won game!!");
                     await message.ShowAsync();
+                    Reset();
                 }
                 else if (playerScore > aiScore)
                 {
@@ -597,18 +659,19 @@ namespace Blade_Card_Game
                             {
                                 var message = new MessageDialog("Player 1 has won game!!");
                                 await message.ShowAsync();
+                                Reset();
                             }
                         }
                     }
                 }
             }
-            else if (aiScore == playerScore && _playerDeck.Visibility == Visibility.Collapsed)
+            if (aiScore == playerScore && _playerDeck.Visibility == Visibility.Collapsed)
             {
-                startButton = false;
                 var message = new MessageDialog("Game is a tie!!");
                 await message.ShowAsync();
+                Reset();
             }
-            else if (aiScore == playerScore && _playerDeck.Visibility != Visibility.Collapsed)
+            if (aiScore == playerScore || playerScore == aiScore && _playerDeck.Visibility == Visibility.Visible)
             {
                 var cardArea = new[] { _aiPlayedCard1, _aiPlayedCard2, _aiPlayedCard3, _aiPlayedCard4, _aiPlayedCard5, _aiPlayedCard6, _aiPlayedCard7, _aiPlayedCard8, _aiPlayedCard9, _aiPlayedCard10 };
                 var playerCardArea = new[] { _playerPlayedCard1, _playerPlayedCard2, _playerPlayedCard3, _playerPlayedCard4, _playerPlayedCard5, _playerPlayedCard6, _playerPlayedCard7, _playerPlayedCard8, _playerPlayedCard9, _playerPlayedCard10 };
