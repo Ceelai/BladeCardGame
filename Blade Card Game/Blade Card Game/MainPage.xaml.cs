@@ -26,12 +26,14 @@ namespace Blade_Card_Game
 
         private string playerCardImage;
         private string aiCardImage;
+        private string firstTurn;
         
         private int playerScore = 0;
         private int aiScore = 0;
 
         private bool startButton = false;
         private bool playerTurn = true;
+
 
         public MainPage()
         {
@@ -62,6 +64,11 @@ namespace Blade_Card_Game
                     if (aiScore < playerScore)
                     {
                         playerTurn = false;
+                        firstTurn = "ai";
+                    }
+                    else
+                    {
+                        firstTurn = "player";
                     }
                 }
                 else
@@ -102,6 +109,80 @@ namespace Blade_Card_Game
             }
         }
 
+        private void isItBolt(int i, string player)
+        {
+            if (player == "ai")
+            {
+                if (aiCardsInHand[i].Face == Face.bolt)
+                {
+                    boltCard(player);
+                }
+                else if (aiCardsInHand[i].Face == Face.mirror)
+                {
+                    mirrorCard();
+                }
+            }
+            else if(player == "player")
+            {
+                if (cardsInHand[i].Face == Face.bolt)
+                {
+                    boltCard(player);
+                }
+                else if (cardsInHand[i].Face == Face.mirror)
+                {
+                    mirrorCard();
+                }
+            }
+        }
+
+        private void mirrorCard()
+        {
+            var aiCardArea = new[] { _aiPlayedCard1, _aiPlayedCard2, _aiPlayedCard3, _aiPlayedCard4, _aiPlayedCard5, _aiPlayedCard6, _aiPlayedCard7, _aiPlayedCard8, _aiPlayedCard9, _aiPlayedCard10 };
+            var playerCardArea = new[] { _playerPlayedCard1, _playerPlayedCard2, _playerPlayedCard3, _playerPlayedCard4, _playerPlayedCard5, _playerPlayedCard6, _playerPlayedCard7, _playerPlayedCard8, _playerPlayedCard9, _playerPlayedCard10 };
+
+            for (int i = 0; i < 10; i++)
+            {
+                var tempCard = aiCardArea[i].Source;
+                aiCardArea[i].Source = playerCardArea[i].Source;
+                playerCardArea[i].Source = tempCard;
+            }
+            string tempScore = _txtAiScore.Text;
+            _txtAiScore.Text = _txtPlayerScore.Text;
+            _txtPlayerScore.Text = tempScore;
+        }
+
+        private void boltCard(string player)
+        {
+            if(player == "player")
+            {
+                var cardArea = new[] { _aiPlayedCard1, _aiPlayedCard2, _aiPlayedCard3, _aiPlayedCard4, _aiPlayedCard5, _aiPlayedCard6, _aiPlayedCard7, _aiPlayedCard8, _aiPlayedCard9, _aiPlayedCard10 };
+                for (int i = 9; i > 0; i--)
+                {
+                    if (cardArea[i].Source != null)
+                    {
+                        cardArea[i].Source = null;
+                        break;
+                    }
+                }
+                aiScore = Convert.ToInt32(_txtAiScore.Text) - _game.CardValue(aiCardImage);
+                _txtAiScore.Text = Convert.ToString(aiScore);
+            }
+            else if(player == "ai")
+            {
+                var cardArea = new[] { _playerPlayedCard1, _playerPlayedCard2, _playerPlayedCard3, _playerPlayedCard4, _playerPlayedCard5, _playerPlayedCard6, _playerPlayedCard7, _playerPlayedCard8, _playerPlayedCard9, _playerPlayedCard10 };
+                for (int i = 9; i > 0; i--)
+                {
+                    if (cardArea[i].Source != null)
+                    {
+                        cardArea[i].Source = null;
+                        break;
+                    }
+                }
+                playerScore = Convert.ToInt32(_txtPlayerScore.Text) - _game.CardValue(playerCardImage);
+                _txtPlayerScore.Text = Convert.ToString(playerScore);
+            }
+        }
+
         private void aiEmptySlot(Image playedCard)
         {
             var cardArea = new[] { _aiPlayedCard1, _aiPlayedCard2, _aiPlayedCard3, _aiPlayedCard4, _aiPlayedCard5, _aiPlayedCard6, _aiPlayedCard7, _aiPlayedCard8, _aiPlayedCard9, _aiPlayedCard10 };
@@ -138,7 +219,8 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
-                whoWon();
+                isItBolt(0, "ai");
+                whoWon("ai");
             }
         }
 
@@ -154,7 +236,8 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
-                whoWon();
+                isItBolt(1, "ai");
+                whoWon("ai");
             }
         }
 
@@ -170,7 +253,8 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
-                whoWon();
+                isItBolt(2, "ai");
+                whoWon("ai");
             }
         }
 
@@ -186,7 +270,8 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
-                whoWon();
+                isItBolt(3, "ai");
+                whoWon("ai");
             }
         }
 
@@ -202,7 +287,8 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
-                whoWon();
+                isItBolt(4, "ai");
+                whoWon("ai");
             }
         }
 
@@ -218,7 +304,8 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
-                whoWon();
+                isItBolt(5, "ai");
+                whoWon("ai");
             }
         }
 
@@ -234,7 +321,8 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
-                whoWon();
+                isItBolt(6, "ai");
+                whoWon("ai");
             }
         }
 
@@ -250,7 +338,8 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
-                whoWon();
+                isItBolt(7, "ai");
+                whoWon("ai");
             }
         }
 
@@ -266,7 +355,8 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
-                whoWon();
+                isItBolt(8, "ai");
+                whoWon("ai");
             }
         }
 
@@ -282,7 +372,8 @@ namespace Blade_Card_Game
 
                 _txtAiScore.Text = Convert.ToString(aiScore);
                 playerTurn = true;
-                whoWon();
+                isItBolt(9, "ai");
+                whoWon("ai");
             }
         }
 
@@ -298,6 +389,8 @@ namespace Blade_Card_Game
 
                 _txtPlayerScore.Text = Convert.ToString(playerScore);
                 playerTurn = false;
+                isItBolt(0, "player");
+                whoWon("player");
             }
         }
 
@@ -313,6 +406,8 @@ namespace Blade_Card_Game
 
                 _txtPlayerScore.Text = Convert.ToString(playerScore);
                 playerTurn = false;
+                isItBolt(1, "player");
+                whoWon("player");
             }
         }
 
@@ -328,6 +423,8 @@ namespace Blade_Card_Game
 
                 _txtPlayerScore.Text = Convert.ToString(playerScore);
                 playerTurn = false;
+                isItBolt(2, "player");
+                whoWon("player");
             }
         }
         private void _playerCard4_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
@@ -342,6 +439,8 @@ namespace Blade_Card_Game
 
                 _txtPlayerScore.Text = Convert.ToString(playerScore);
                 playerTurn = false;
+                isItBolt(3, "player");
+                whoWon("player");
             }
         }
         private void _playerCard5_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
@@ -356,6 +455,8 @@ namespace Blade_Card_Game
 
                 _txtPlayerScore.Text = Convert.ToString(playerScore);
                 playerTurn = false;
+                isItBolt(4, "player");
+                whoWon("player");
             }
         }
 
@@ -371,6 +472,8 @@ namespace Blade_Card_Game
 
                 _txtPlayerScore.Text = Convert.ToString(playerScore);
                 playerTurn = false;
+                isItBolt(5, "player");
+                whoWon("player");
             }
         }
 
@@ -386,6 +489,8 @@ namespace Blade_Card_Game
 
                 _txtPlayerScore.Text = Convert.ToString(playerScore);
                 playerTurn = false;
+                isItBolt(6, "player");
+                whoWon("player");
             }
         }
 
@@ -401,6 +506,8 @@ namespace Blade_Card_Game
 
                 _txtPlayerScore.Text = Convert.ToString(playerScore);
                 playerTurn = false;
+                isItBolt(7, "player");
+                whoWon("player");
             }
         }
 
@@ -416,6 +523,8 @@ namespace Blade_Card_Game
 
                 _txtPlayerScore.Text = Convert.ToString(playerScore);
                 playerTurn = false;
+                isItBolt(8, "player");
+                whoWon("player");
             }
         }
 
@@ -431,34 +540,92 @@ namespace Blade_Card_Game
 
                 _txtPlayerScore.Text = Convert.ToString(playerScore);
                 playerTurn = false;
+                isItBolt(9, "player");
+                whoWon("player");
             }
         }
 
-        private async void whoWon()
+        private async void whoWon(string player)
         {
             aiScore = Convert.ToInt32(_txtAiScore.Text);
             playerScore = Convert.ToInt32(_txtPlayerScore.Text);
 
-            if (aiScore > playerScore)
+            if(player == "ai" && firstTurn == "player")
             {
-                
-                startButton = false;
-                var message = new MessageDialog("Player 2 has won game!!");
-                await message.ShowAsync();
+                if (aiScore < playerScore)
+                {
+                    startButton = false;
+                    var message = new MessageDialog("Player 1 has won game!!");
+                    await message.ShowAsync();
+                } 
+                else if(playerScore < aiScore)
+                {
+                    var hand = new[] { _playerCard1, _playerCard2, _playerCard3, _playerCard4, _playerCard5, _playerCard6, _playerCard7, _playerCard8, _playerCard9, _playerCard10 };
+                    int j = 0;
+                    for(int i = 0; i < 10; i++)
+                    {
+                        if (hand[i].Visibility == Visibility.Collapsed)
+                        {
+                            j++;
+                            if(j == 10)
+                            {
+                                var message = new MessageDialog("Player 2 has won game!!");
+                                await message.ShowAsync();
+                            }
+                        }
+                    }
+                }
             }
-            else if (aiScore < playerScore)
+            else if(player == "player" && firstTurn == "ai")
             {
-                
-                startButton = false;
-                var message = new MessageDialog("Player 1 has won game!!");
-                await message.ShowAsync();
+                if (aiScore > playerScore)
+                {
+                    startButton = false;
+                    var message = new MessageDialog("Player 2 has won game!!");
+                    await message.ShowAsync();
+                }
+                else if (playerScore > aiScore)
+                {
+                    var hand = new[] { _aiCard1, _aiCard2, _aiCard3, _aiCard4, _aiCard5, _aiCard6, _aiCard7, _aiCard8, _aiCard9, _aiCard10 };
+                    int j = 0;
+                    for (int i = 0; i < 10; i++)
+                    {
+                        if (hand[i].Visibility == Visibility.Collapsed)
+                        {
+                            j++;
+                            if (j == 10)
+                            {
+                                var message = new MessageDialog("Player 1 has won game!!");
+                                await message.ShowAsync();
+                            }
+                        }
+                    }
+                }
             }
-            else if (aiScore == playerScore)
+            else if (aiScore == playerScore && _playerDeck.Visibility == Visibility.Collapsed)
             {
-                
                 startButton = false;
                 var message = new MessageDialog("Game is a tie!!");
                 await message.ShowAsync();
+            }
+            else if (aiScore == playerScore && _playerDeck.Visibility != Visibility.Collapsed)
+            {
+                var cardArea = new[] { _aiPlayedCard1, _aiPlayedCard2, _aiPlayedCard3, _aiPlayedCard4, _aiPlayedCard5, _aiPlayedCard6, _aiPlayedCard7, _aiPlayedCard8, _aiPlayedCard9, _aiPlayedCard10 };
+                var playerCardArea = new[] { _playerPlayedCard1, _playerPlayedCard2, _playerPlayedCard3, _playerPlayedCard4, _playerPlayedCard5, _playerPlayedCard6, _playerPlayedCard7, _playerPlayedCard8, _playerPlayedCard9, _playerPlayedCard10 };
+
+                _playerDeckCard.Source = null;
+                _aiDeckCard.Source = null;
+
+                for (int i = 0; i < 10; i++)
+                {
+                    cardArea[i].Source = null;
+                    playerCardArea[i].Source = null;
+                }
+                var message = new MessageDialog("Score is a tie! Draw card from deck.");
+                await message.ShowAsync();
+
+                _txtAiScore.Text = "0";
+                _txtPlayerScore.Text = "0";
             }
         }
 
