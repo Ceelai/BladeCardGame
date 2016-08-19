@@ -99,11 +99,15 @@ namespace Blade_Card_Game
                     {
                         playerTurn = false;
                         firstTurn = "ai";
+                        var message = new MessageDialog("Player 2 goes first!");
+                        await message.ShowAsync();
                     }
                     else
                     {
                         firstTurn = "player";
                         playerTurn = true;
+                        var message = new MessageDialog("Player 1 goes first!");
+                        await message.ShowAsync();
                     }
                     cardDrawn = true;
                 }
