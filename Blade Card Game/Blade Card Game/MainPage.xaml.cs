@@ -77,7 +77,7 @@ namespace Blade_Card_Game
         //Method for distributing the cards when the deck is clicked. 
         private async void _playerDeck_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (startButton == true && _playerDeckCard.Source == null)
+            if (startButton == true && cardDrawn == false)
             {
                 if (playerDrawedCard.Count < 12)
                 {
@@ -103,6 +103,7 @@ namespace Blade_Card_Game
                     else
                     {
                         firstTurn = "player";
+                        playerTurn = true;
                     }
                     cardDrawn = true;
                 }
@@ -252,7 +253,7 @@ namespace Blade_Card_Game
         }
         private void _aiCard1_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if (_aiCard1.Visibility != Visibility.Collapsed && playerTurn == false && cardDrawn == true)
+            if (_aiCard1.Visibility != Visibility.Collapsed && cardDrawn == true && playerTurn == false)
             {
                 aiEmptySlot(_aiCard1);
                 _aiCard1.Visibility = Visibility.Collapsed;
@@ -673,22 +674,57 @@ namespace Blade_Card_Game
             }
             if (aiScore == playerScore || playerScore == aiScore && _playerDeck.Visibility == Visibility.Visible)
             {
-                var cardArea = new[] { _aiPlayedCard1, _aiPlayedCard2, _aiPlayedCard3, _aiPlayedCard4, _aiPlayedCard5, _aiPlayedCard6, _aiPlayedCard7, _aiPlayedCard8, _aiPlayedCard9, _aiPlayedCard10 };
-                var playerCardArea = new[] { _playerPlayedCard1, _playerPlayedCard2, _playerPlayedCard3, _playerPlayedCard4, _playerPlayedCard5, _playerPlayedCard6, _playerPlayedCard7, _playerPlayedCard8, _playerPlayedCard9, _playerPlayedCard10 };
-
-                _playerDeckCard.Source = null;
-                _aiDeckCard.Source = null;
-
+                var aiHand = new[] { _aiCard1, _aiCard2, _aiCard3, _aiCard4, _aiCard5, _aiCard6, _aiCard7, _aiCard8, _aiCard9, _aiCard10 };
+                int j = 0;
                 for (int i = 0; i < 10; i++)
                 {
-                    cardArea[i].Source = null;
-                    playerCardArea[i].Source = null;
+                    if (aiHand[i].Visibility == Visibility.Collapsed)
+                    {
+                        j++;
+                        if (j == 10)
+                        {
+                            var message = new MessageDialog("Player 1 has won game!!");
+                            await message.ShowAsync();
+                            Reset();
+                        }
+                    }
                 }
-                var message = new MessageDialog("Score is a tie! Draw card from deck.");
-                await message.ShowAsync();
 
-                _txtAiScore.Text = "0";
-                _txtPlayerScore.Text = "0";
+                var hand = new[] { _playerCard1, _playerCard2, _playerCard3, _playerCard4, _playerCard5, _playerCard6, _playerCard7, _playerCard8, _playerCard9, _playerCard10 };
+                int z = 0;
+                for (int i = 0; i < 10; i++)
+                {
+                    if (hand[i].Visibility == Visibility.Collapsed)
+                    {
+                        z++;
+                        if (z == 10)
+                        {
+                            var message = new MessageDialog("Player 2 has won game!!");
+                            await message.ShowAsync();
+                            Reset();
+                        }
+                    }
+                }
+                if (j != 10 && z != 10)
+                {
+                    var cardArea = new[] { _aiPlayedCard1, _aiPlayedCard2, _aiPlayedCard3, _aiPlayedCard4, _aiPlayedCard5, _aiPlayedCard6, _aiPlayedCard7, _aiPlayedCard8, _aiPlayedCard9, _aiPlayedCard10 };
+                    var playerCardArea = new[] { _playerPlayedCard1, _playerPlayedCard2, _playerPlayedCard3, _playerPlayedCard4, _playerPlayedCard5, _playerPlayedCard6, _playerPlayedCard7, _playerPlayedCard8, _playerPlayedCard9, _playerPlayedCard10 };
+
+                    _playerDeckCard.Source = null;
+                    _aiDeckCard.Source = null;
+
+                    for (int i = 0; i < 10; i++)
+                    {
+                        cardArea[i].Source = null;
+                        playerCardArea[i].Source = null;
+                    }
+                    var message = new MessageDialog("Score is a tie! Draw card from deck.");
+                    await message.ShowAsync();
+
+                    cardDrawn = false;
+                    _txtAiScore.Text = "0";
+                    _txtPlayerScore.Text = "0";
+                }
             }
         }
 
